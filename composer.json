@@ -1,0 +1,22 @@
+{
+    "name": "typicms/subscriptions",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samuel De Backer",
+            "email": "sdebacker@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~6.0",
+        "laravel/cashier-mollie": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TypiCMS\\Modules\\Subscriptions\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
