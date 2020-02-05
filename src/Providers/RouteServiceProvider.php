@@ -32,16 +32,17 @@ class RouteServiceProvider extends ServiceProvider
              */
             if ($page = TypiCMS::getPageLinkedToModule('subscriptions')) {
                 $router->middleware('public')->group(function (Router $router) use ($page) {
-                    $options = $page->private ? ['middleware' => 'auth'] : [];
+                    $options = ['middleware' => 'auth'];
                     foreach (locales() as $lang) {
                         if ($page->translate('status', $lang) && $uri = $page->uri($lang)) {
-                            $router->get($uri, $options + ['uses' => 'PublicController@profileIndex'])->name($lang . '::subscription-profile');
-                            $router->post($uri, $options + ['uses' => 'PublicController@profileUpdate'])->name($lang . '::subscription-profile-update');
-                            $router->get($uri . '/payment-method', $options + ['uses' => 'PublicController@paymentMethod'])->name($lang . '::subscription-paymentmethod');
-                            $router->post($uri . '/payment-method', $options + ['uses' => 'PublicController@paymentMethodUpdate'])->name($lang . '::subscription-paymentmethod-update');
-                            $router->get($uri . '/subscription', $options + ['uses' => 'PublicController@plans'])->name($lang . '::subscription-plans');
-                            $router->post($uri . '/subscription', $options + ['uses' => 'PublicController@subscribe'])->name($lang . '::subscription-subscribe');
-                            $router->get($uri . '/subscription', $options + ['uses' => 'PublicController@invoices'])->name($lang . '::subscription-invoices');
+                            $router->get($uri, $options + ['uses' => 'PublicController@profileIndex'])->name($lang . '::subscriptions-profile');
+                            $router->get($uri . '/edit', $options + ['uses' => 'PublicController@profileEdit'])->name($lang . '::subscriptions-profile-edit');
+                            $router->post($uri . '/edit', $options + ['uses' => 'PublicController@profileUpdate'])->name($lang . '::subscriptions-profile-update');
+                            $router->get($uri . '/payment-method', $options + ['uses' => 'PublicController@paymentMethod'])->name($lang . '::subscriptions-paymentmethod');
+                            $router->post($uri . '/payment-method', $options + ['uses' => 'PublicController@paymentMethodUpdate'])->name($lang . '::subscriptions-paymentmethod-update');
+                            $router->get($uri . '/subscription', $options + ['uses' => 'PublicController@plans'])->name($lang . '::subscriptions-plans');
+                            $router->post($uri . '/subscription', $options + ['uses' => 'PublicController@subscribe'])->name($lang . '::subscriptions-subscribe');
+                            $router->get($uri . '/subscription', $options + ['uses' => 'PublicController@invoices'])->name($lang . '::subscriptions-invoices');
                         }
                     }
                 });

@@ -2,8 +2,10 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
+use TypiCMS\Modules\Subscriptions\Http\Requests\SubscriptionsProfileUpdate;
 use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
 class PublicController extends BasePublicController
@@ -17,11 +19,20 @@ class PublicController extends BasePublicController
             ->with(compact('models'));
     }
 
-    public function profileUpdate()
+    public function profileEdit()
     {
-        //
+        $models = collect([]);
+
+        return view('subscriptions::public.edit')
+            ->with(compact('models'));
     }
 
+    public function profileUpdate(SubscriptionsProfileUpdate $request)
+    {
+        Auth::user()->update($request->validated());
+
+        return back()->with('success', true);
+    }
 
     public function paymentMethod()
     {
