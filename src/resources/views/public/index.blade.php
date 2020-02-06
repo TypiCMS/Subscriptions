@@ -2,7 +2,12 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
+@section('title', __('Your profile'))
+
 @section('content')
+
+    @include('subscriptions::public._partials.tabs')
+    @include('subscriptions::public._partials.alerts')
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
@@ -18,7 +23,7 @@
                 {{ auth()->user()->country }}
             </p>
 
-            <a class="card-link" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
+            <a class="card-link" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">{{ __('Edit my profile') }}</a>
         </div>
     </div>
 

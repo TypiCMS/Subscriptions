@@ -2,14 +2,19 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
+@section('title', __('Edit your profile'))
+
+
 @section('content')
+
+    @include('subscriptions::public._partials.tabs')
+    @include('subscriptions::public._partials.alerts')
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
-
     @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
-            {{  __('Your profile has been successfully updated') }}
+            {{ session()->get('success') }}
         </div>
     @endif
 
@@ -40,7 +45,7 @@
             {!! BootForm::text(__('Country'), 'country')->required() !!}
         </div>
     </div>
-    {!! BootForm::submit(__('Submit')) !!}
+    {!! BootForm::submit(__('Save')) !!}
     {!! BootForm::close() !!}
 
     @include('files::public._documents', ['model' => $page])

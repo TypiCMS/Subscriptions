@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Mollie\Laravel\Facades\Mollie;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use TypiCMS\Modules\Core\Filters\FilterOr;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Files\Models\File;
+use TypiCMS\Modules\Subscriptions\Models\BillableUser;
 use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
 class ApiController extends BaseApiController
@@ -19,11 +21,11 @@ class ApiController extends BaseApiController
     {
         $data = QueryBuilder::for(Subscription::class)
             ->selectFields($request->input('fields.subscriptions'))
-            ->allowedSorts(['status_translated', 'title_translated'])
+            ->allowedSorts(['plan', 'name'])
             ->allowedFilters([
-                AllowedFilter::custom('title', new FilterOr()),
+                AllowedFilter::custom('plan', new FilterOr()),
             ])
-            ->allowedIncludes(['image'])
+            ->allowedIncludes(['owner'])
             ->paginate($request->input('per_page'));
 
         return $data;
