@@ -18,7 +18,7 @@ This module is part of [TypiCMS](https://github.com/TypiCMS/Base), a multilingua
 4. Run `php artisan subscriptions:install`
 5. Configure at least one subscription plan in config/cashier_plans.php.
 6. In config/cashier_coupons.php you can manage any coupons. By default an example coupon is enabled. Consider disabling it before deploying to production.
-7;Change the `first_payment` value in `config/cashier.php` to `'redirect_url' => config('app.url') . '/webhooks/cashier/check-payment',`
+7. Change the `first_payment` value in `config/cashier.php` to `'redirect_url' => config('app.url') . '/webhooks/cashier/check-payment',`
 
 ## Additional information
 [Read the cashier-mollie documentation](https://github.com/laravel/cashier-mollie)
