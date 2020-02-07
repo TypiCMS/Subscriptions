@@ -5,7 +5,7 @@ This module is part of [TypiCMS](https://github.com/TypiCMS/Base), a multilingua
 
 ## Installation
 
-First, Make sure your `APP_URL` in `.env` is correctly set.
+Make sure your `APP_URL` in `.env` is correctly set.
 
 1. Add `CASHIER_MODEL=TypiCMS\Modules\Subscriptions\Models\BillableUser` to your `.env` file.
 2. Add your Mollie key such as `MOLLIE_KEY="test_12345678912345678912345678912345"` to your `.env` file.
