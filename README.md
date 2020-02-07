@@ -11,7 +11,7 @@ This module is part of [TypiCMS](https://github.com/TypiCMS/Base), a multilingua
 3. Edit `config/auth.php` and change the 'model' value to
 `'users' => [
      'driver' => 'eloquent',
-     'model' => TypiCMS\Modules\Users\Subscriptions\BillableUser::class,
+     'model' => TypiCMS\Modules\Subscriptions\Models\BillableUser::class,
  ],`
 4. Run `php artisan subscriptions:install`
 5. Configure at least one subscription plan in config/cashier_plans.php.
