@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::namespace($this->namespace)->group(function (Router $router) {
 
-            $router->get('webhooks/cashier/check-payment/{payment_id}', ['uses' => 'PublicController@checkPayment']);
+            $router->get('/webhooks/cashier/check-payment/{payment_id}', ['uses' => 'PublicController@checkPayment']);
 
             /*
              * Front office routes
