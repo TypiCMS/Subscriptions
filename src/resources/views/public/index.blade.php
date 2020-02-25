@@ -23,7 +23,7 @@
                 {{ auth()->user()->country }}
             </p>
 
-            <a class="card-link" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">{{ __('Edit my profile') }}</a>
+            <a class="card-link" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
         </div>
     </div>
 

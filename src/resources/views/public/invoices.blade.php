@@ -15,9 +15,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Date</th>
-            <th scope="col">Amount</th>
-            <th scope="col">View</th>
+            <th scope="col">@lang('Date')</th>
+            <th scope="col">@lang('Amount')</th>
+            <th scope="col">@lang('Action')</th>
         </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                 <th scope="row">{{ $invoice->id() }}</th>
                 <td>{{ $invoice->date() }}</td>
                 <td>{{ $invoice->total() }}</td>
-                <td><a href="{{ route(app()->getLocale() .'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-primary">View</a></td>
+                <td><a href="{{ route(app()->getLocale() .'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-primary">@lang('View invoice')</a></td>
             </tr>
         @endforeach
         </tbody>

@@ -11,18 +11,18 @@
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
-    <h1>{{ __('Plans') }}</h1>
+    <h1>@lang('Plans')</h1>
 
     @if(auth()->user()->subscribed('main'))
         @if(auth()->user()->subscription('main')->onGracePeriod())
-            <p>{{ __('Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.', ['name' => auth()->user()->subscription('main')->plan, 'ends_at' => auth()->user()->subscription('main')->ends_at]) }}</p>
-            <p><a href="{{ route(app()->getLocale() .'::subscriptions-resume') }}">{{ __('Resume your subscription to the :name plan.', ['name' => auth()->user()->subscription('main')->plan]) }}</a></p>
+            <p>@lang('Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.', ['name' => auth()->user()->subscription('main')->plan, 'ends_at' => auth()->user()->subscription('main')->ends_at])</p>
+            <p><a href="{{ route(app()->getLocale() .'::subscriptions-resume') }}">@lang('Resume your subscription to the :name plan.', ['name' => auth()->user()->subscription('main')->plan])</a></p>
         @elseif(auth()->user()->subscription('main')->cancelled())
-            <p>{{ __('Your subscription to the :name plan was cancelled', ['name' => auth()->user()->subscription('main')->plan]) }}</p>
+            <p>@lang('Your subscription to the :name plan was cancelled.', ['name' => auth()->user()->subscription('main')->plan])</p>
         @else
-            <p>{{ __('You are subscribed to the :name plan.', ['name' => auth()->user()->subscription('main')->plan]) }}</p>
-            <p><a href="{{ route(app()->getLocale() .'::subscriptions-upgrade') }}">{{ __('Upgrade your subscription to another.') }}</a></p>
-            <p><a href="{{ route(app()->getLocale() .'::subscriptions-cancel') }}">{{ __('Cancel your subscription to the :name plan.', ['name' => auth()->user()->subscription('main')->plan]) }}</a></p>
+            <p>@lang('You are subscribed to the :name plan.', ['name' => auth()->user()->subscription('main')->plan])</p>
+            <p><a href="{{ route(app()->getLocale() .'::subscriptions-upgrade') }}">@lang('Upgrade your subscription to another plan.')</a></p>
+            <p><a href="{{ route(app()->getLocale() .'::subscriptions-cancel') }}">@lang('Cancel your subscription to the :name plan.', ['name' => auth()->user()->subscription('main')->plan])</a></p>
         @endif
     @else
         {!! BootForm::open() !!}

@@ -11,8 +11,8 @@
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
-    <h1>{{ __('Available plans') }}</h1>
-    <p>{{ __('Please choose the plan you want to upgrade to.') }}</p>
+    <h1>@lang('Available plans')</h1>
+    <p>@lang('Please choose the plan you want to upgrade to.')</p>
 
     {!! BootForm::open()->action(route(app()->getLocale() .'::subscriptions-upgradePost')) !!}
     <ul>

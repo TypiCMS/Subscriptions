@@ -2,7 +2,7 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Invoices'))
+@section('title', __('Payment Method'))
 
 @section('content')
 
@@ -29,7 +29,7 @@
         @endforeach
         @if($activeMandates->count() == 0)
             <tr>
-                <td colspan="4" class="text-center text-muted">{{ __('There is no payment method available.') }}</td>
+                <td colspan="4" class="text-center text-muted">@lang('There is no payment method available.')</td>
             </tr>
         @endif
         </tbody>
