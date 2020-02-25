@@ -115,6 +115,7 @@ class PublicController extends BasePublicController
 
             if (! $user->subscription('main')->cancelled() && ! $user->subscription('main')->onGracePeriod()) {
                 $user->subscription('main')->cancel();
+
                 return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('Your subscription was sucessfully cancelled.'));
             }
 
@@ -134,6 +135,28 @@ class PublicController extends BasePublicController
         } catch (Exception $e) {
             return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be resumed.'));
         }
+    }
+
+    public function upgrade()
+    {
+        $models = collect();
+        $plans = collect(config('cashier_plans.plans'));
+
+        $plans->forget(Auth::user()->subscription('main')->plan);
+
+        return view('subscriptions::public.upgrade')
+            ->with(compact('models', 'plans'));
+    }
+
+    public function upgradePost(SubscriptionsPlan $request)
+    {
+        try {
+            Auth::user()->subscription('main')->swap($request->input('plan'));
+        } catch (Exception $e) {
+            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be upgraded.'));
+        }
+
+        return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('Your subscription was sucessfully upgraded.'));
     }
 
     public function invoices()

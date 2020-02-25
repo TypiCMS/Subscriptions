@@ -21,6 +21,7 @@
             <p>{{ __('Your subscription to the :name plan was cancelled', ['name' => auth()->user()->subscription('main')->plan]) }}</p>
         @else
             <p>{{ __('You are subscribed to the :name plan.', ['name' => auth()->user()->subscription('main')->plan]) }}</p>
+            <p><a href="{{ route(app()->getLocale() .'::subscriptions-upgrade') }}">{{ __('Upgrade your subscription to another.') }}</a></p>
             <p><a href="{{ route(app()->getLocale() .'::subscriptions-cancel') }}">{{ __('Cancel your subscription to the :name plan.', ['name' => auth()->user()->subscription('main')->plan]) }}</a></p>
         @endif
     @else
