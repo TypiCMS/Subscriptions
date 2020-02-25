@@ -53,4 +53,25 @@ class BillableUser extends User
         return null;
     }
 
+    /**
+     * @return string
+     * @link https://docs.mollie.com/reference/v2/payments-api/create-payment#parameters
+     * @example 'nl_NL'
+     */
+    public function getLocale()
+    {
+        switch (app()->getLocale()) {
+            case 'fr':
+                $locale = 'fr_BE';
+                break;
+            case 'nl':
+                $locale = 'nl_BE';
+                break;
+            default:
+                $locale = 'en_US';
+                break;
+        }
+
+        return $locale;
+    }
 }
