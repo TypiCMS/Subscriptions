@@ -12,12 +12,6 @@
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
-    @if(session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session()->get('success') }}
-        </div>
-    @endif
-
     {!! BootForm::open() !!}
     {!! BootForm::bind(auth()->user()) !!}
     <div class="row">
