@@ -13,7 +13,6 @@ use Mollie\Laravel\Facades\Mollie;
 use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
 use TypiCMS\Modules\Subscriptions\Http\Requests\SubscriptionsPlan;
 use TypiCMS\Modules\Subscriptions\Http\Requests\SubscriptionsProfileUpdate;
-use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
 class PublicController extends BasePublicController
 {
@@ -48,7 +47,6 @@ class PublicController extends BasePublicController
         $customer = Mollie::api()->customers()->get(Auth::user()->mollie_customer_id);
         $mandates = $customer->mandates();
 
-
         $activeMandates = collect([]);
         foreach ($mandates as $mandate) {
             if ($mandate->status == 'valid') {
@@ -66,16 +64,16 @@ class PublicController extends BasePublicController
             $customer = Mollie::api()->customers()->get(Auth::user()->mollie_customer_id);
             $customer->getMandate($id)->revoke();
 
-            return redirect()->route(app()->getLocale() . '::subscriptions-paymentmethod')->with('success', __('Your payment method was sucesfully revoked.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-paymentmethod')->with('success', __('Your payment method was sucesfully revoked.'));
         } catch (Exception $e) {
-            return redirect()->route(app()->getLocale() . '::subscriptions-paymentmethod')->with('error', __('Your payment method could not be revoked.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-paymentmethod')->with('error', __('Your payment method could not be revoked.'));
         }
     }
 
     public function paymentMethodUpdate()
     {
         // Not now.
-        return redirect()->route(app()->getLocale() . '::subscriptions-paymentmethod');
+        return redirect()->route(app()->getLocale().'::subscriptions-paymentmethod');
     }
 
     public function plans()
@@ -94,8 +92,7 @@ class PublicController extends BasePublicController
         $user = Auth::user();
         $name = 'main';
 
-        if (! $user->subscribed($name, $plan)) {
-
+        if (!$user->subscribed($name, $plan)) {
             $result = $user->newSubscription($name, $plan)->create();
 
             if (is_a($result, RedirectToCheckoutResponse::class)) {
@@ -105,7 +102,7 @@ class PublicController extends BasePublicController
             return back()->with('success', __('You are now successfully subscribed.'));
         }
 
-        return back()->with('error', __('You are already on the ' . $plan . ' plan'));
+        return back()->with('error', __('You are already on the '.$plan.' plan'));
     }
 
     public function cancel(Request $request)
@@ -113,16 +110,15 @@ class PublicController extends BasePublicController
         try {
             $user = Auth::user();
 
-            if (! $user->subscription('main')->cancelled() && ! $user->subscription('main')->onGracePeriod()) {
+            if (!$user->subscription('main')->cancelled() && !$user->subscription('main')->onGracePeriod()) {
                 $user->subscription('main')->cancel();
 
-                return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('Your subscription was sucessfully cancelled.'));
+                return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('success', __('Your subscription was sucessfully cancelled.'));
             }
 
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be cancelled.'));
-
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be cancelled.'));
         } catch (Exception $e) {
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be cancelled.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be cancelled.'));
         }
     }
 
@@ -131,9 +127,9 @@ class PublicController extends BasePublicController
         try {
             Auth::user()->subscription('main')->resume();
 
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('Your subscription was sucessfully resumed.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('success', __('Your subscription was sucessfully resumed.'));
         } catch (Exception $e) {
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be resumed.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be resumed.'));
         }
     }
 
@@ -153,10 +149,10 @@ class PublicController extends BasePublicController
         try {
             Auth::user()->subscription('main')->swap($request->input('plan'));
         } catch (Exception $e) {
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be upgraded.'));
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be upgraded.'));
         }
 
-        return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('Your subscription was sucessfully upgraded.'));
+        return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('success', __('Your subscription was sucessfully upgraded.'));
     }
 
     public function invoices()
@@ -185,13 +181,12 @@ class PublicController extends BasePublicController
             $payment = Mollie::api()->payments()->get($payment_id);
 
             if ($payment->status == PaymentStatus::STATUS_PAID) {
-                return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('success', __('You are now successfully subscribed.'));
+                return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('success', __('You are now successfully subscribed.'));
             }
 
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be perfomed. Please retry'));
-
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be perfomed. Please retry'));
         } catch (Exception $e) {
-            return redirect()->route(app()->getLocale() . '::subscriptions-plans')->with('error', __('Your subscription could not be perfomed. Please retry'));
+            return redirect()->route(app()->getLocale().'::subscriptions-plans')->with('error', __('Your subscription could not be perfomed. Please retry'));
         }
     }
 }

@@ -7,8 +7,6 @@ class AddMollieColumnsUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return null
      */
     public function up()
     {
@@ -23,8 +21,6 @@ class AddMollieColumnsUsersTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return null
      */
     public function down()
     {

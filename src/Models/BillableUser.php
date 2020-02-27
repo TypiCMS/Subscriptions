@@ -40,7 +40,7 @@ class BillableUser extends User
      */
     public function getInvoiceInformation()
     {
-        return [$this->first_name . ' ' . $this->last_name, $this->email, $this->street . ' ' . $this->number, $this->zip . ' ' . $this->city, $this->country];
+        return [$this->first_name.' '.$this->last_name, $this->email, $this->street.' '.$this->number, $this->zip.' '.$this->city, $this->country];
     }
 
     /**
@@ -55,7 +55,9 @@ class BillableUser extends User
 
     /**
      * @return string
-     * @link https://docs.mollie.com/reference/v2/payments-api/create-payment#parameters
+     *
+     * @see https://docs.mollie.com/reference/v2/payments-api/create-payment#parameters
+     *
      * @example 'nl_NL'
      */
     public function getLocale()
@@ -63,12 +65,15 @@ class BillableUser extends User
         switch (app()->getLocale()) {
             case 'fr':
                 $locale = 'fr_BE';
+
                 break;
             case 'nl':
                 $locale = 'nl_BE';
+
                 break;
             default:
                 $locale = 'en_US';
+
                 break;
         }
 

@@ -2,13 +2,9 @@
 
 namespace TypiCMS\Modules\Subscriptions\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Laracasts\Presenter\PresentableTrait;
-use Spatie\Translatable\HasTranslations;
 use TypiCMS\Modules\Core\Models\Base;
-use TypiCMS\Modules\Files\Models\File;
-use TypiCMS\Modules\Files\Traits\HasFiles;
 use TypiCMS\Modules\History\Traits\Historable;
 use TypiCMS\Modules\Subscriptions\Presenters\ModulePresenter;
 
@@ -74,7 +70,7 @@ class Subscription extends Base
      */
     protected function ended()
     {
-        return $this->cancelled() && ! $this->onGracePeriod();
+        return $this->cancelled() && !$this->onGracePeriod();
     }
 
     /**
@@ -104,7 +100,7 @@ class Subscription extends Base
      */
     protected function recurring()
     {
-        return ! $this->onTrial() && ! $this->cancelled();
+        return !$this->onTrial() && !$this->cancelled();
     }
 
     /**
@@ -114,7 +110,6 @@ class Subscription extends Base
      */
     protected function cancelled()
     {
-        return ! is_null($this->ends_at);
+        return !is_null($this->ends_at);
     }
-
 }
