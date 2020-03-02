@@ -38,6 +38,7 @@ Add the cashier model and the mollie key in your environment file:
 
 ```
 // .env
+
 CASHIER_MODEL=TypiCMS\Modules\Subscriptions\Models\BillableUser
 MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
