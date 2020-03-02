@@ -15,8 +15,8 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Action</th>
+            <th scope="col">@lang('Type')</th>
+            <th scope="col">@lang('Action')</th>
         </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
             <tr>
                 <th scope="row">{{ $mandate->id }}</th>
                 <td>{{ $mandate->method }}</td>
-                <td><a href="{{ route(app()->getLocale() .'::subscriptions-paymentmethod-revoke', $mandate->id) }}" class="btn btn-sm btn-outline-danger">Remove</a></td>
+                <td><a href="{{ route(app()->getLocale() .'::subscriptions-paymentmethod-revoke', $mandate->id) }}" class="btn btn-sm btn-outline-danger">@lang('Remove')</a></td>
             </tr>
         @endforeach
         @if($activeMandates->count() == 0)
