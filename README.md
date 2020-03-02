@@ -36,7 +36,7 @@ TypiCMS\Modules\Subscriptions\Providers\ModuleProvider::class,
 
 Add the cashier model and the mollie key in your environment file:
 
-```
+```php
 // .env
 
 CASHIER_MODEL=TypiCMS\Modules\Subscriptions\Models\BillableUser
