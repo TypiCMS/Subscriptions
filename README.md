@@ -13,6 +13,8 @@ It allows you to setup a subscriptions management system based on [Laravel Cashi
 
 ### Install the package
 
+Install Cashier and migrate the database:
+
 ```bash
 composer require typicms/subscriptions
 ```
