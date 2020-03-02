@@ -6,8 +6,8 @@
 
 @section('content')
 
-    @include('subscriptions::public._partials.tabs')
-    @include('subscriptions::public._partials.alerts')
+    @include('subscriptions::public.tabs')
+    @include('subscriptions::public.alerts')
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
