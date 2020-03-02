@@ -1,4 +1,5 @@
 {
+    "# subscriptions": "Geen abonnement | 1 abonnement | {count} abonnements",
     "Action": "Actie",
     "Amount": "Bedrag",
     "Available plans": "Beschikbare plannen",
@@ -20,6 +21,7 @@
     "Save": "Bespaar",
     "Street": "Straat",
     "Subscribe": "Abonneer u op",
+    "Subscriptions": "Abonnementen",
     "There is no payment method available.": "Er is geen betaalmethode beschikbaar.",
     "Upgrade to this plan": "Upgrade naar dit plan",
     "Upgrade your subscription to another plan.": "U kunt uw abonnement upgraden naar een ander plan.",

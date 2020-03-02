@@ -1,4 +1,5 @@
 {
+    "# subscriptions": "Aucun abonnement | 1 abonnement | {count} abonnements",
     "Action": "Action",
     "Amount": "Montant",
     "Available plans": "Plans disponibles",
@@ -20,6 +21,7 @@
     "Save": "Sauver",
     "Street": "Rue",
     "Subscribe": "S’abonner",
+    "Subscriptions": "Abonnements",
     "There is no payment method available.": "Aucun mode de paiement n’est disponible.",
     "Upgrade to this plan": "Passer à ce plan",
     "Upgrade your subscription to another plan.": "Passer à un autre plan.",
