@@ -4,7 +4,7 @@ namespace TypiCMS\Modules\Subscriptions\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class MollieCashierInstall extends Command
+class Install extends Command
 {
     /**
      * The name and signature of the console command.

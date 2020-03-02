@@ -6,7 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Subscriptions\Composers\SidebarViewComposer;
-use TypiCMS\Modules\Subscriptions\Console\Commands\MollieCashierInstall;
+use TypiCMS\Modules\Subscriptions\Console\Commands\Install;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -53,7 +53,7 @@ class ModuleProvider extends ServiceProvider
         $app = $this->app;
 
         $this->commands([
-            MollieCashierInstall::class,
+            Install::class,
         ]);
 
         /*
