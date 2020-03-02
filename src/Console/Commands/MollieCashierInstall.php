@@ -3,7 +3,6 @@
 namespace TypiCMS\Modules\Subscriptions\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 class MollieCashierInstall extends Command
 {
@@ -22,7 +21,7 @@ class MollieCashierInstall extends Command
      */
     public function handle()
     {
-        Artisan::call('cashier:install --template --no-interaction --quiet');
-        Artisan::call('migrate');
+        $this->call('cashier:install', ['--template' => true]);
+        $this->call('migrate');
     }
 }
