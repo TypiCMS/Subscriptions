@@ -64,7 +64,7 @@ php artisan subscriptions:install
 
 Configure your subscription plans in config/cashier_plans.php.
 
-In config/cashier_coupons.php you can manage any coupons. By default an example coupon is enabled. Consider disabling it before deploying to production.
+Manage any coupons in config/cashier_coupons.php. By default an example coupon is enabled, consider disabling it before deploying to production.
 
 Configure the redirect URL of the first payment:
 ```php
