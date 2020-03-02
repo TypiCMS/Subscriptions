@@ -22,7 +22,6 @@ class SidebarViewComposer
                 $item->icon = config('typicms.subscriptions.sidebar.icon');
                 $item->weight = config('typicms.subscriptions.sidebar.weight');
                 $item->route('admin::index-subscriptions');
-                $item->append('admin::create-subscription');
             });
         });
     }
