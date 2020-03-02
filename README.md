@@ -8,8 +8,8 @@ It allows you to setup a subscriptions management system based on [Laravel Cashi
 
 ### Prerequisites
 
-- You must have a working installation of TypiCMS
-- Make sure your `APP_URL` in `.env` is correctly set.
+-   You must have a working installation of TypiCMS
+-   Make sure your `APP_URL` in `.env` is correctly set.
 
 ### Install the package
 
@@ -44,13 +44,14 @@ MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
 
 Change the model class of the authentication configuration:
+
 ```php
 // config/auth.php
 
 'users' => [
-     'driver' => 'eloquent',
-     'model' => TypiCMS\Modules\Subscriptions\Models\BillableUser::class,
- ],
+    'driver' => 'eloquent',
+    'model' => TypiCMS\Modules\Subscriptions\Models\BillableUser::class,
+],
 ```
 
 ### Run the installation script
@@ -68,6 +69,7 @@ Configure your subscription plans in `config/cashier_plans.php`.
 Manage any coupons in `config/cashier_coupons.php`. By default an example coupon is enabled, consider disabling it before deploying to production.
 
 Configure the redirect URL of the first payment:
+
 ```php
 // config/cashier.php
 
@@ -75,4 +77,5 @@ Configure the redirect URL of the first payment:
 ```
 
 ## Additional information
+
 [Read the cashier-mollie documentation](https://github.com/laravel/cashier-mollie)
