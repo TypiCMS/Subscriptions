@@ -28,7 +28,7 @@ class Subscription extends Base
         return $this->morphTo();
     }
 
-    public function getStatusAttribute()
+    public function getStatusAttribute(): string
     {
         if ($this->onTrial()) {
             return 'onTrial';
@@ -55,60 +55,48 @@ class Subscription extends Base
 
     /**
      * Determine if the subscription is active.
-     *
-     * @return bool
      */
-    protected function active()
+    protected function active(): bool
     {
         return is_null($this->ends_at) || $this->onTrial() || $this->onGracePeriod();
     }
 
     /**
      * Determine if the subscription has ended and the grace period has expired.
-     *
-     * @return bool
      */
-    protected function ended()
+    protected function ended(): bool
     {
         return $this->cancelled() && !$this->onGracePeriod();
     }
 
     /**
      * Determine if the subscription is within its trial period.
-     *
-     * @return bool
      */
-    protected function onTrial()
+    protected function onTrial(): bool
     {
         return $this->trial_ends_at && Carbon::parse($this->trial_ends_at)->isFuture();
     }
 
     /**
      * Determine if the subscription is within its grace period after cancellation.
-     *
-     * @return bool
      */
-    protected function onGracePeriod()
+    protected function onGracePeriod(): bool
     {
         return $this->ends_at && Carbon::parse($this->ends_at)->isFuture();
     }
 
     /**
      * Determine if the subscription is recurring and not on trial.
-     *
-     * @return bool
      */
-    protected function recurring()
+    protected function recurring(): bool
     {
         return !$this->onTrial() && !$this->cancelled();
     }
 
     /**
      * Determine if the subscription is no longer active.
-     *
-     * @return bool
      */
-    protected function cancelled()
+    protected function cancelled(): bool
     {
         return !is_null($this->ends_at);
     }
