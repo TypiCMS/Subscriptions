@@ -25,6 +25,10 @@ class ModuleProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views/', 'subscriptions');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/subscriptions'),
+        ], 'views');
+
         /*
          * Sidebar view composer
          */
