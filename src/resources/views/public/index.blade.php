@@ -6,10 +6,12 @@
 
 @section('content')
 
-    @include('subscriptions::public.tabs')
-    @include('subscriptions::public.alerts')
-
     <div class="rich-content">{!! $page->present()->body !!}</div>
+    @include('files::public._documents', ['model' => $page])
+    @include('files::public._images', ['model' => $page])
+
+    @include('subscriptions::public._tabs')
+    @include('subscriptions::public._alerts')
 
     <div class="card">
         <div class="card-body">
@@ -26,8 +28,5 @@
             <a class="card-link" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
         </div>
     </div>
-
-    @include('files::public._documents', ['model' => $page])
-    @include('files::public._images', ['model' => $page])
 
 @endsection

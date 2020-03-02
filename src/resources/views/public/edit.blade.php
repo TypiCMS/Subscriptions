@@ -7,10 +7,12 @@
 
 @section('content')
 
-    @include('subscriptions::public.tabs')
-    @include('subscriptions::public.alerts')
-
     <div class="rich-content">{!! $page->present()->body !!}</div>
+    @include('files::public._documents', ['model' => $page])
+    @include('files::public._images', ['model' => $page])
+
+    @include('subscriptions::public._tabs')
+    @include('subscriptions::public._alerts')
 
     {!! BootForm::open() !!}
     {!! BootForm::bind(auth()->user()) !!}
@@ -41,8 +43,5 @@
     </div>
     {!! BootForm::submit(__('Save')) !!}
     {!! BootForm::close() !!}
-
-    @include('files::public._documents', ['model' => $page])
-    @include('files::public._images', ['model' => $page])
 
 @endsection

@@ -6,10 +6,12 @@
 
 @section('content')
 
-    @include('subscriptions::public.tabs')
-    @include('subscriptions::public.alerts')
-
     <div class="rich-content">{!! $page->present()->body !!}</div>
+    @include('files::public._documents', ['model' => $page])
+    @include('files::public._images', ['model' => $page])
+
+    @include('subscriptions::public._tabs')
+    @include('subscriptions::public._alerts')
 
     <h1>@lang('Available plans')</h1>
     <p>@lang('Please choose the plan you want to upgrade to.')</p>
@@ -22,9 +24,5 @@
     </ul>
     {!! BootForm::submit(__('Upgrade to this plan')) !!}
     {!! BootForm::close() !!}
-
-
-    @include('files::public._documents', ['model' => $page])
-    @include('files::public._images', ['model' => $page])
 
 @endsection
