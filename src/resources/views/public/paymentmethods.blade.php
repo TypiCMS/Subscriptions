@@ -1,10 +1,10 @@
-@extends('pages::public.master')
+@extends('subscriptions::public.master')
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
 @section('title', __('Payment Method'))
 
-@section('content')
+@section('master')
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
     @include('files::public._documents', ['model' => $page])
