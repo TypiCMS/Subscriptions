@@ -27,6 +27,7 @@
     "Upgrade your subscription to another plan.": "Actualice su suscripción a otro plan.",
     "View invoice": "Ver la factura",
     "You are subscribed to the :name plan.": "Está suscrito al plan :name.",
+    "You don’t have any invoices.": "No tienes ninguna factura.",
     "Your profile": "Su perfil",
     "Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.": "Su suscripción al plan :name fue cancelada. Aún tienes acceso a él hasta :ends_at.",
     "Your subscription to the :name plan was cancelled.": "Se ha cancelado su suscripción al plan :name.",

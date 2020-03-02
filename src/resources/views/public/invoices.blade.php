@@ -11,6 +11,7 @@
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
 
+    @if ($invoices->count() > 0)
     <table class="table">
         <thead>
         <tr>
@@ -31,6 +32,9 @@
         @endforeach
         </tbody>
     </table>
+    @else
+    <p>@lang('You don’t have any invoices.')</p>
+    @endif
 
     @include('files::public._documents', ['model' => $page])
     @include('files::public._images', ['model' => $page])
