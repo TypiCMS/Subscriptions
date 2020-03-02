@@ -14,32 +14,4 @@ class AdminController extends BaseAdminController
     {
         return view('subscriptions::admin.index');
     }
-
-    public function create(): View
-    {
-        $model = new Subscription();
-
-        return view('subscriptions::admin.create')
-            ->with(compact('model'));
-    }
-
-    public function edit(Subscription $subscription): View
-    {
-        return view('subscriptions::admin.edit')
-            ->with(['model' => $subscription]);
-    }
-
-    public function store(FormRequest $request): RedirectResponse
-    {
-        $subscription = Subscription::create($request->all());
-
-        return $this->redirect($request, $subscription);
-    }
-
-    public function update(Subscription $subscription, FormRequest $request): RedirectResponse
-    {
-        $subscription->update($request->all());
-
-        return $this->redirect($request, $subscription);
-    }
 }

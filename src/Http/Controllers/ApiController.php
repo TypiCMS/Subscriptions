@@ -29,29 +29,6 @@ class ApiController extends BaseApiController
         return $data;
     }
 
-    protected function updatePartial(Subscription $subscription, Request $request): JsonResponse
-    {
-        $data = [];
-        foreach ($request->all() as $column => $content) {
-            if (is_array($content)) {
-                foreach ($content as $key => $value) {
-                    $data[$column.'->'.$key] = $value;
-                }
-            } else {
-                $data[$column] = $content;
-            }
-        }
-
-        foreach ($data as $key => $value) {
-            $subscription->$key = $value;
-        }
-        $saved = $subscription->save();
-
-        return response()->json([
-            'error' => !$saved,
-        ]);
-    }
-
     public function destroy(Subscription $subscription): JsonResponse
     {
         $deleted = $subscription->delete();
@@ -59,20 +36,5 @@ class ApiController extends BaseApiController
         return response()->json([
             'error' => !$deleted,
         ]);
-    }
-
-    public function files(Subscription $subscription): Collection
-    {
-        return $subscription->files;
-    }
-
-    public function attachFiles(Subscription $subscription, Request $request): JsonResponse
-    {
-        return $subscription->attachFiles($request);
-    }
-
-    public function detachFile(Subscription $subscription, File $file): void
-    {
-        $subscription->detachFile($file);
     }
 }

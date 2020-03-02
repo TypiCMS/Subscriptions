@@ -58,10 +58,6 @@ class RouteServiceProvider extends ServiceProvider
              */
             $router->middleware('admin')->prefix('admin')->group(function (Router $router) {
                 $router->get('subscriptions', 'AdminController@index')->name('admin::index-subscriptions')->middleware('can:see-all-subscriptions');
-                $router->get('subscriptions/create', 'AdminController@create')->name('admin::create-subscription')->middleware('can:create-subscription');
-                $router->get('subscriptions/{subscription}/edit', 'AdminController@edit')->name('admin::edit-subscription')->middleware('can:update-subscription');
-                $router->post('subscriptions', 'AdminController@store')->name('admin::store-subscription')->middleware('can:create-subscription');
-                $router->put('subscriptions/{subscription}', 'AdminController@update')->name('admin::update-subscription')->middleware('can:update-subscription');
             });
 
             /*
@@ -70,12 +66,7 @@ class RouteServiceProvider extends ServiceProvider
             $router->middleware('api')->prefix('api')->group(function (Router $router) {
                 $router->middleware('auth:api')->group(function (Router $router) {
                     $router->get('subscriptions', 'ApiController@index')->middleware('can:see-all-subscriptions');
-                    $router->patch('subscriptions/{subscription}', 'ApiController@updatePartial')->middleware('can:update-subscription');
                     $router->delete('subscriptions/{subscription}', 'ApiController@destroy')->middleware('can:delete-subscription');
-
-                    $router->get('subscriptions/{subscription}/files', 'ApiController@files')->middleware('can:update-subscription');
-                    $router->post('subscriptions/{subscription}/files', 'ApiController@attachFiles')->middleware('can:update-subscription');
-                    $router->delete('subscriptions/{subscription}/files/{file}', 'ApiController@detachFile')->middleware('can:update-subscription');
                 });
             });
         });
