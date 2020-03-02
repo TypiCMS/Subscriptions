@@ -2,7 +2,7 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Plans'))
+@section('title', __('Upgrade your subscription to another plan.'))
 
 @section('content')
 
