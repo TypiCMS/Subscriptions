@@ -76,6 +76,10 @@ Configure the redirect URL of the first payment:
 'redirect_url' => config('app.url').'/webhooks/cashier/check-payment',
 ```
 
+### Setup your app
+
+Create a page linked to the Subscriptions module and navigate to it.
+
 ## Additional information
 
 [Read the cashier-mollie documentation](https://github.com/laravel/cashier-mollie)
