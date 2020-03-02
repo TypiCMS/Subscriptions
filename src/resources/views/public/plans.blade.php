@@ -38,8 +38,4 @@
     @include('files::public._documents', ['model' => $page])
     @include('files::public._images', ['model' => $page])
 
-    @include('subscriptions::public._itemlist-json-ld', ['items' => $models])
-
-    @includeWhen($models->count() > 0, 'subscriptions::public._list', ['items' => $models])
-
 @endsection
