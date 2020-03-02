@@ -22,6 +22,7 @@ class MollieCashierInstall extends Command
     public function handle()
     {
         $this->call('cashier:install', ['--template' => true]);
+        $this->call('translations:add', ['path' => 'vendor/typicms/subscriptions/src/resources/lang']);
         $this->call('migrate');
     }
 }
