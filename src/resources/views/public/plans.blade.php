@@ -13,8 +13,6 @@
     @include('subscriptions::public._tabs')
     @include('subscriptions::public._alerts')
 
-    <h1>@lang('Plans')</h1>
-
     @if(auth()->user()->subscribed('main'))
         @if(auth()->user()->subscription('main')->onGracePeriod())
             <p>@lang('Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.', ['name' => auth()->user()->subscription('main')->plan, 'ends_at' => auth()->user()->subscription('main')->ends_at])</p>
