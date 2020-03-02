@@ -13,8 +13,6 @@ It allows you to setup a subscriptions management system based on [Laravel Cashi
 
 ### Install the package
 
-Install Cashier and migrate the database:
-
 ```bash
 composer require typicms/subscriptions
 ```
@@ -55,6 +53,8 @@ Change the model class of the authentication configuration:
 ```
 
 ### Run the installation script
+
+Install Cashier and migrate the database:
 
 ```bash
 php artisan subscriptions:install
