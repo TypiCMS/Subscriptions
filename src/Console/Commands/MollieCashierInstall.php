@@ -14,7 +14,7 @@ class MollieCashierInstall extends Command
     /**
      * The console command description.
      */
-    protected $description = 'Install the subscriptions module and Mollie-Cashier package';
+    protected $description = 'Install the Subscriptions module and the Laravel Cashier for Mollie package.';
 
     /**
      * Execute the console command.
