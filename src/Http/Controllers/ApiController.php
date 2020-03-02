@@ -17,7 +17,7 @@ class ApiController extends BaseApiController
     {
         $data = QueryBuilder::for(Subscription::class)
             ->selectFields($request->input('fields.subscriptions'))
-            ->allowedSorts(['plan', 'name'])
+            ->allowedSorts(['plan', 'created_at'])
             ->allowedFilters([
                 AllowedFilter::custom('plan', new FilterOr()),
             ])
