@@ -17,7 +17,7 @@ It allows you to setup a subscriptions management system based on [Laravel Cashi
 composer require typicms/subscriptions
 ```
 
-Add the service provider
+Add the service provider:
 
 ```php
 // config/app.php
