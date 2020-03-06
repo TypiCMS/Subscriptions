@@ -42,6 +42,7 @@
         </div>
     </div>
     {!! BootForm::submit(__('Save')) !!}
+    <a class="btn btn-link text-secondary" href="{{ route($lang.'::subscriptions-profile') }}">@lang('Cancel')</a>
     {!! BootForm::close() !!}
 
 @endsection
