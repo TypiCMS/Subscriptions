@@ -12,20 +12,20 @@
 
     @include('subscriptions::public._alerts')
 
-    <div class="profile">
-        <h2>@lang('Profile')</h2>
-        <p class="profile-name">{{ $user->first_name }} {{ $user->last_name }}</p>
-        <p class="profile-email">{{ $user->email }}</p>
-        <p class="profile-address">
+    <div class="account-profile">
+        <h2 class="account-profile-title">@lang('Profile')</h2>
+        <p class="account-profile-name">{{ $user->first_name }} {{ $user->last_name }}</p>
+        <p class="account-profile-email">{{ $user->email }}</p>
+        <p class="account-profile-address">
             {{ $user->street }} {{ $user->number }}<br/>
             {{ $user->zip }} {{ $user->city }}<br/>
             {{ $user->country }}
         </p>
-        <a class="profile-submit-button btn btn-primary" href="{{ route(app()->getLocale().'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
+        <a class="account-profile-submit-button btn btn-primary" href="{{ route(app()->getLocale().'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
     </div>
 
-    <div class="plan">
-        <h2>@lang('Subscription')</h2>
+    <div class="account-plan">
+        <h2 class="account-title">@lang('Subscription')</h2>
         @if($user->subscribed('main'))
             @if($user->subscription('main')->onGracePeriod())
                 <p>@lang('Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.', ['name' => $user->subscription('main')->plan, 'ends_at' => strtolower($user->subscription('main')->ends_at->formatLocalized('%A %d %B %Y'))])</p>
@@ -49,9 +49,9 @@
         @endif
     </div>
 
-    <div class="payment-methods">
-        <h2>@lang('Payment methods')</h2>
-        <table class="table">
+    <div class="account-payment-methods">
+        <h2 class="account-payment-methods-title">@lang('Payment methods')</h2>
+        <table class="account-payment-methods-table">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -76,10 +76,10 @@
         </table>
     </div>
 
-    <div class="invoices">
-        <h2>@lang('Invoices')</h2>
+    <div class="account-invoices">
+        <h2 class="account-invoices-title">@lang('Invoices')</h2>
         @if ($invoices->count() > 0)
-        <table class="table">
+        <table class="account-invoices-table">
             <thead>
             <tr>
                 <th scope="col">#</th>
