@@ -44,7 +44,8 @@ class PublicController extends BasePublicController
 
         $invoices = Auth::user()->orders->invoices();
 
-        return view('subscriptions::public.index')->with(compact('user', 'plans', 'activeMandates', 'invoices'));
+        return view('subscriptions::public.index')
+            ->with(compact('user', 'plans', 'activeMandates', 'invoices'));
     }
 
     public function profileEdit(Request $request): View
