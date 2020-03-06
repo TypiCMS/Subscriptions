@@ -16,7 +16,7 @@
         @foreach ($invoices as $invoice)
             <tr>
                 <th scope="row">{{ $invoice->id() }}</th>
-                <td>{{ $invoice->date() }}</td>
+                <td>{{ $invoice->date()->format('d.m.Y') }}</td>
                 <td>{{ $invoice->total() }}</td>
                 <td><a href="{{ route(app()->getLocale().'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-primary">@lang('View invoice')</a></td>
             </tr>
