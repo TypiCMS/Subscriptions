@@ -20,7 +20,7 @@
                 </th>
                 <td><small>{{ $invoice->date()->format('d.m.Y') }}</small></td>
                 <td>{{ $invoice->total() }}</td>
-                <td><a href="{{ route(app()->getLocale().'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-primary">@lang('View invoice')</a></td>
+                <td><a href="{{ route(app()->getLocale().'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-primary">@lang('View')</a></td>
             </tr>
         @endforeach
         </tbody>
