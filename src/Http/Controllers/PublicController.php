@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Laravel\Cashier\Order\Order;
 use Laravel\Cashier\SubscriptionBuilder\RedirectToCheckoutResponse;
+use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\Types\PaymentStatus;
 use Mollie\Laravel\Facades\Mollie;
 use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
@@ -22,15 +23,22 @@ class PublicController extends BasePublicController
 
         $plans = collect(config('cashier_plans.plans'));
 
-        $customer = Mollie::api()
-            ->customers()
-            ->get($user->mollie_customer_id);
-        $mandates = $customer->mandates();
+        $customer = null;
+        $activeMandates = collect();
 
-        $activeMandates = collect([]);
-        foreach ($mandates as $mandate) {
-            if ($mandate->status == 'valid') {
-                $activeMandates->push($mandate);
+        try {
+            $customer = Mollie::api()
+                ->customers()
+                ->get($user->mollie_customer_id);
+        } catch (ApiException $exception) {
+            report($exception);
+        }
+
+        if ($customer !== null) {
+            foreach ($customer->mandates() as $mandate) {
+                if ($mandate->status === 'valid') {
+                    $activeMandates->push($mandate);
+                }
             }
         }
 
