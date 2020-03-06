@@ -62,11 +62,11 @@ class PublicController extends BasePublicController
             $customer->getMandate($id)->revoke();
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-paymentmethod')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('success', __('Your payment method was sucesfully revoked.'));
         } catch (Exception $e) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-paymentmethod')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your payment method could not be revoked.'));
         }
     }
@@ -74,7 +74,7 @@ class PublicController extends BasePublicController
     public function paymentMethodUpdate()
     {
         // Not now.
-        return redirect()->route(app()->getLocale().'::subscriptions-paymentmethod');
+        return redirect()->route(app()->getLocale().'::subscriptions-profile');
     }
 
     public function subscribe(SubscriptionsPlan $request)
