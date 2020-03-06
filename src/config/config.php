@@ -1,12 +1,11 @@
 <?php
 
 return [
-    'per_page' => 30,
     'order' => [
         'id' => 'desc',
     ],
     'sidebar' => [
-        'icon' => 'icon fa fa-fw fa-cube',
+        'icon' => 'icon fa fa-fw fa-credit-card',
         'weight' => 8,
     ],
 ];
