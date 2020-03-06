@@ -106,16 +106,16 @@ class PublicController extends BasePublicController
                 $user->subscription('main')->cancel();
 
                 return redirect()
-                    ->route(app()->getLocale().'::subscriptions-plans')
+                    ->route(app()->getLocale().'::subscriptions-profile')
                     ->with('success', __('Your subscription was sucessfully cancelled.'));
             }
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
         } catch (Exception $e) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
         }
     }
@@ -128,11 +128,11 @@ class PublicController extends BasePublicController
                 ->resume();
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('success', __('Your subscription was sucessfully resumed.'));
         } catch (Exception $e) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be resumed.'));
         }
     }
@@ -155,12 +155,12 @@ class PublicController extends BasePublicController
                 ->swap($request->input('plan'));
         } catch (Exception $e) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be upgraded.'));
         }
 
         return redirect()
-            ->route(app()->getLocale().'::subscriptions-plans')
+            ->route(app()->getLocale().'::subscriptions-profile')
             ->with('success', __('Your subscription was sucessfully upgraded.'));
     }
 
@@ -184,16 +184,16 @@ class PublicController extends BasePublicController
 
             if ($payment->status == PaymentStatus::STATUS_PAID) {
                 return redirect()
-                    ->route(app()->getLocale().'::subscriptions-plans')
+                    ->route(app()->getLocale().'::subscriptions-profile')
                     ->with('success', __('You are now successfully subscribed.'));
             }
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry'));
         } catch (Exception $e) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-plans')
+                ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry'));
         }
     }
