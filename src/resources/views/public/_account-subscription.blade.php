@@ -9,7 +9,7 @@
                 <p>@lang('Your subscription to the :name plan was cancelled. You still have access to it until :ends_at.', ['name' => $user->subscription('main')->plan, 'ends_at' => strtolower($user->subscription('main')->ends_at->formatLocalized('%A %d %B %Y'))])</p>
             </div>
             <div class="account-subscription-footer">
-                <a class="btn btn-sm btn-success" href="{{ route(app()->getLocale().'::subscriptions-resume') }}">@lang('Resume your subscription to the :name plan.', ['name' => $user->subscription('main')->plan])</a>
+                <a class="account-subscription-footer-button" href="{{ route(app()->getLocale().'::subscriptions-resume') }}">@lang('Resume your subscription to the :name plan.', ['name' => $user->subscription('main')->plan])</a>
             </div>
         @elseif ($user->subscription('main')->cancelled())
             <div class="account-subscription-body">
