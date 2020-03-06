@@ -27,6 +27,8 @@
         {{-- <a href="{{ route(app()->getLocale().'::subscriptions-paymentmethod-revoke', $mandate->id) }}" class="btn btn-sm btn-outline-danger">@lang('Remove')</a> --}}
         @endforeach
     @else
+    <div class="account-payment-methods-body">
         <p class="account-payment-methods-notice">@lang('There is no payment method available.')</p>
+    </div>
     @endif
 </div>

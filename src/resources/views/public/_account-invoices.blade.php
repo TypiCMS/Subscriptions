@@ -26,6 +26,8 @@
         </tbody>
     </table>
     @else
-    <p class="account-invoices-notice">@lang('You don’t have any invoices.')</p>
+    <div class="account-invoices-body">
+        <p class="account-invoices-notice">@lang('You don’t have any invoices.')</p>
+    </div>
     @endif
 </div>
