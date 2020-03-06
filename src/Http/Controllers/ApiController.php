@@ -2,7 +2,6 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -25,14 +24,5 @@ class ApiController extends BaseApiController
             ->paginate($request->input('per_page'));
 
         return $data;
-    }
-
-    public function destroy(Subscription $subscription): JsonResponse
-    {
-        $deleted = $subscription->delete();
-
-        return response()->json([
-            'error' => !$deleted,
-        ]);
     }
 }

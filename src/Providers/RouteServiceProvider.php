@@ -55,6 +55,8 @@ class RouteServiceProvider extends ServiceProvider
              */
             $router->middleware('admin')->prefix('admin')->group(function (Router $router) {
                 $router->get('subscriptions', 'AdminController@index')->name('admin::index-subscriptions')->middleware('can:see-all-subscriptions');
+                $router->get('subscriptions/{subscription}/edit', 'AdminController@edit')->name('admin::edit-subscription')->middleware('can:update-subscription');
+                $router->put('subscriptions/{subscription}', 'AdminController@update')->name('admin::update-subscription')->middleware('can:update-subscription');
             });
 
             /*
@@ -63,7 +65,6 @@ class RouteServiceProvider extends ServiceProvider
             $router->middleware('api')->prefix('api')->group(function (Router $router) {
                 $router->middleware('auth:api')->group(function (Router $router) {
                     $router->get('subscriptions', 'ApiController@index')->middleware('can:see-all-subscriptions');
-                    $router->delete('subscriptions/{subscription}', 'ApiController@destroy')->middleware('can:delete-subscription');
                 });
             });
         });

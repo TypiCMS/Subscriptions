@@ -8,6 +8,6 @@ class ModulePresenter extends Presenter
 {
     public function title()
     {
-        return $this->entity->owner->first_name . ' ' . $this->entity->owner->last_name;
+        return $this->entity->owner->first_name.' '.$this->entity->owner->last_name;
     }
 }
