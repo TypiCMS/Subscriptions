@@ -14,17 +14,17 @@
 
     <div class="account">
 
-        <div class="row">
-            <div class="col-6">
+        <div class="account-row">
+            <div class="account-column">
                 @include('subscriptions::public._account-profile')
             </div>
-            <div class="col-6">
+            <div class="account-column">
                 @include('subscriptions::public._account-subscription')
             </div>
-            <div class="col-6">
+            <div class="account-column">
                 @include('subscriptions::public._account-payment-method')
             </div>
-            <div class="col-6">
+            <div class="account-column">
                 @include('subscriptions::public._account-invoices')
             </div>
         </div>
