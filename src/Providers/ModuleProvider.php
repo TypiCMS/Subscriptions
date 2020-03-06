@@ -25,6 +25,10 @@ class ModuleProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/subscriptions'),
         ], 'views');
 
+        $this->publishes([
+            __DIR__.'/../resources/scss' => resource_path('scss'),
+        ], 'resources');
+
         /*
          * Sidebar view composer
          */
