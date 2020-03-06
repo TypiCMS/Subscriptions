@@ -11,7 +11,6 @@
     @include('files::public._documents', ['model' => $page])
     @include('files::public._images', ['model' => $page])
 
-    @include('subscriptions::public._tabs')
     @include('subscriptions::public._alerts')
 
     {!! BootForm::open() !!}

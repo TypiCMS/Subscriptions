@@ -10,7 +10,6 @@
     @include('files::public._documents', ['model' => $page])
     @include('files::public._images', ['model' => $page])
 
-    @include('subscriptions::public._tabs')
     @include('subscriptions::public._alerts')
 
     <h1>@lang('Available plans')</h1>
