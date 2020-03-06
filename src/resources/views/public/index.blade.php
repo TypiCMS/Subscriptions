@@ -14,19 +14,14 @@
 
     <div class="profile">
         <h2>@lang('Profile')</h2>
-
         <p class="profile-name">{{ $user->first_name }} {{ $user->last_name }}</p>
-
         <p class="profile-email">{{ $user->email }}</p>
-
         <p class="profile-address">
             {{ $user->street }} {{ $user->number }}<br/>
             {{ $user->zip }} {{ $user->city }}<br/>
             {{ $user->country }}
         </p>
-
         <a class="profile-submit-button btn btn-primary" href="{{ route(app()->getLocale() .'::subscriptions-profile-edit') }}">@lang('Edit my profile')</a>
-
     </div>
 
     <div class="plan">
