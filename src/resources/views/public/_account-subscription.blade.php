@@ -29,7 +29,7 @@
         <div class="account-subscription-body">
             <p>@lang('Please choose a plan and click on “I subscribe”.')</p>
         </div>
-        {!! BootForm::open() !!}
+        {!! BootForm::open()->action(route(app()->getLocale().'::subscriptions-subscribe')) !!}
         <ul class="account-subscription-list">
             @foreach ($plans as $name => $plan)
             <li class="account-subscription-item">
