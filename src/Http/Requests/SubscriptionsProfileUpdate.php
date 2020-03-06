@@ -24,13 +24,13 @@ class SubscriptionsProfileUpdate extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'street' => 'required|string',
-            'number' => 'required|string',
-            'zip' => 'required|string',
-            'city' => 'required|string',
-            'country' => 'required|string',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'number' => 'required|string|max:255',
+            'zip' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
         ];
     }
 }
