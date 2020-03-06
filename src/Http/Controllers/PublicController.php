@@ -184,6 +184,17 @@ class PublicController extends BasePublicController
         return $order->invoice()->view();
     }
 
+    public function downloadInvoice(Request $request, $id)
+    {
+        $order = Order::where('number', $id)->firstOrFail();
+
+        if ($order->owner_id !== Auth::user()->id) {
+            abort(403);
+        }
+
+        return $order->invoice()->download();
+    }
+
     public function checkPayment(Request $request, $payment_id)
     {
         try {
