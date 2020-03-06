@@ -26,6 +26,9 @@
         @endif
     @else
         @if ($plans->count() > 0)
+        <div class="account-subscription-body">
+            <p>@lang('Please choose a plan and click on “I subscribe”.')</p>
+        </div>
         {!! BootForm::open() !!}
         <ul class="account-subscription-list">
             @foreach ($plans as $name => $plan)
@@ -41,7 +44,7 @@
             @endforeach
         </ul>
         <div class="account-subscription-footer">
-            {!! BootForm::submit(__('Subscribe'))->addClass('btn-sm btn-success') !!}
+            {!! BootForm::submit(__('I subscribe'))->addClass('account-subscription-footer-button') !!}
         </div>
         {!! BootForm::close() !!}
         @endif
