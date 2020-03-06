@@ -7,9 +7,9 @@
 
 @section('master')
 
-    @include('subscriptions::public._alerts')
-
     <h1>@lang('Edit your profile')</h1>
+
+    @include('subscriptions::public._alerts')
 
     {!! BootForm::open() !!}
     {!! BootForm::bind(auth()->user()) !!}

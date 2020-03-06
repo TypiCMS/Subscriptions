@@ -6,10 +6,10 @@
 
 @section('master')
 
-    @include('subscriptions::public._alerts')
-
     <h1>@lang('Available plans')</h1>
     <p>@lang('Please choose the plan you want to switch to.')</p>
+
+    @include('subscriptions::public._alerts')
 
     {!! BootForm::open()->action(route(app()->getLocale() .'::subscriptions-upgradePost')) !!}
     <ul>
