@@ -1,6 +1,6 @@
 <div class="account-subscription">
     <div class="account-subscription-header">
-        <h2 class="account-subscription-title">@lang('Subscription')</h2>
+        <h2 class="account-subscription-title">@lang('Your subscription')</h2>
     </div>
     @if ($user->subscribed('main'))
 
@@ -18,10 +18,10 @@
         @else
             <div class="account-subscription-body">
                 <p>@lang('You are subscribed to the :name plan.', ['name' => $user->subscription('main')->plan])</p>
-                <p><a class="small text-danger" onclick="return confirm('@lang('Are you sure you want to cancel your subscription to :name?', ['name' => $user->subscription('main')->plan])')" href="{{ route(app()->getLocale().'::subscriptions-cancel') }}">@lang('Cancel your subscription.')</a></p>
+                <p><a class="small text-danger" onclick="return confirm('@lang('Are you sure you want to cancel your subscription to :name?', ['name' => $user->subscription('main')->plan])')" href="{{ route(app()->getLocale().'::subscriptions-cancel') }}">@lang('Cancel my subscription.')</a></p>
             </div>
             <div class="account-subscription-footer">
-                <a class="account-subscription-edit-button" href="{{ route(app()->getLocale().'::subscriptions-upgrade') }}">@lang('Upgrade your subscription to another plan.')</a>
+                <a class="account-subscription-edit-button" href="{{ route(app()->getLocale().'::subscriptions-upgrade') }}">@lang('Switch your subscription to another plan.')</a>
             </div>
         @endif
     @else

@@ -1,6 +1,6 @@
 <div class="account-payment-methods">
     <div class="account-payment-methods-header">
-        <h2 class="account-payment-methods-title">@lang('Payment method')</h2>
+        <h2 class="account-payment-methods-title">@lang('Your payment method')</h2>
     </div>
     <div class="account-payment-methods-body">
         @if ($activeMandates->count() > 0)

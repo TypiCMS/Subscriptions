@@ -2,7 +2,7 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Upgrade your subscription to another plan.'))
+@section('title', __('Switch your subscription to another plan.'))
 
 @section('master')
 
@@ -13,7 +13,7 @@
     @include('subscriptions::public._alerts')
 
     <h1>@lang('Available plans')</h1>
-    <p>@lang('Please choose the plan you want to upgrade to.')</p>
+    <p>@lang('Please choose the plan you want to switch to.')</p>
 
     {!! BootForm::open()->action(route(app()->getLocale() .'::subscriptions-upgradePost')) !!}
     <ul>
@@ -21,7 +21,7 @@
             {!! BootForm::radio(ucfirst($name) . ' '. $plan['description'] .' <span class="text-muted small">'. $plan['amount']['value'] . ' ' . $plan['amount']['currency'] .' '. __('each') . ' ' . $plan['interval'] . '</span>', 'plan', $name) !!}
         @endforeach
     </ul>
-    {!! BootForm::submit(__('Upgrade to this plan')) !!}
+    {!! BootForm::submit(__('Switch to this plan')) !!}
     <a class="btn btn-link text-secondary" href="{{ route($lang.'::subscriptions-profile') }}">@lang('Cancel')</a>
     {!! BootForm::close() !!}
 

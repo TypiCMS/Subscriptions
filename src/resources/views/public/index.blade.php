@@ -2,9 +2,11 @@
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Your profile'))
+@section('title', __('Your account'))
 
 @section('master')
+
+    <h1>@lang('Your account')</h1>
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
     @include('files::public._documents', ['model' => $page])

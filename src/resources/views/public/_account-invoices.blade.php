@@ -1,15 +1,15 @@
 <div class="account-invoices">
     <div class="account-invoices-header">
-        <h2 class="account-invoices-title">@lang('Invoices')</h2>
+        <h2 class="account-invoices-title">@lang('Your invoices')</h2>
     </div>
     @if ($invoices->count() > 0)
     <table class="account-invoices-table">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">@lang('Number')</th>
             <th scope="col">@lang('Date')</th>
             <th scope="col">@lang('Amount')</th>
-            <th scope="col">@lang('Action')</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
