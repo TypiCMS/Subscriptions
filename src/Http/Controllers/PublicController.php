@@ -59,7 +59,7 @@ class PublicController extends BasePublicController
     {
         Auth::user()->update($request->validated());
 
-        return back()->with('success', __('Your profile has been successfully updated'));
+        return back()->with('success', __('Your profile has been successfully updated.'));
     }
 
     public function paymentMethodRevoke(Request $request, $id)
@@ -199,11 +199,11 @@ class PublicController extends BasePublicController
 
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
-                ->with('error', __('Your subscription could not be perfomed. Please retry'));
+                ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         } catch (Exception $e) {
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
-                ->with('error', __('Your subscription could not be perfomed. Please retry'));
+                ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         }
     }
 }
