@@ -74,6 +74,8 @@ class PublicController extends BasePublicController
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('success', __('Your payment method was sucesfully revoked.'));
         } catch (Exception $e) {
+            report($e);
+
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your payment method could not be revoked.'));
@@ -123,6 +125,8 @@ class PublicController extends BasePublicController
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
         } catch (Exception $e) {
+            report($e);
+
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
@@ -140,6 +144,8 @@ class PublicController extends BasePublicController
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('success', __('Your subscription was sucessfully resumed.'));
         } catch (Exception $e) {
+            report($e);
+
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be resumed.'));
@@ -163,6 +169,8 @@ class PublicController extends BasePublicController
                 ->subscription('main')
                 ->swap($request->input('plan'));
         } catch (Exception $e) {
+            report($e);
+
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be upgraded.'));
@@ -212,6 +220,8 @@ class PublicController extends BasePublicController
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         } catch (Exception $e) {
+            report($e);
+
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry.'));
