@@ -103,7 +103,7 @@ class PublicController extends BasePublicController
             return back()->with('success', __('You are now successfully subscribed.'));
         }
 
-        return back()->with('error', __('You are already on the '.$plan.' plan'));
+        return back()->with('error', __('You are already on the :plan plan', ['plan' => $plan]));
     }
 
     public function cancel(Request $request)
