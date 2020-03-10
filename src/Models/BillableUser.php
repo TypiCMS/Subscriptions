@@ -25,7 +25,7 @@ class BillableUser extends User
         'zip',
         'city',
         'country',
-        'tax_percentage'
+        'tax_percentage',
     ];
 
     public function taxPercentage()
