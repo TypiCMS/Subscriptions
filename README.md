@@ -73,7 +73,7 @@ Configure the redirect URL of the first payment:
 ```php
 // config/cashier.php
 
-'redirect_url' => config('app.url').'/webhooks/cashier/check-payment',
+'redirect_url' => config('app.url').'/webhooks/cashier/check-payment/{payment_id}',
 ```
 
 ### Setup your app
