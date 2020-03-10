@@ -30,21 +30,7 @@
             <p>@lang('Please choose a plan and click on “I subscribe”.')</p>
         </div>
         {!! BootForm::open()->action(route($lang.'::subscriptions-subscribe')) !!}
-        <ul class="account-subscription-list">
-            @foreach ($plans as $name => $plan)
-            <li class="account-subscription-item">
-                <div class="form-check">
-                    {!! Form::radio('plan', $name)->id('plan-'.$name)->addClass('form-check-input') !!}
-                    <label class="form-check-label" for="{{ 'plan-'.$name }}">
-                        <span>{{ $plan['description'] }}</span><br>
-                        <span class="text-muted small">
-                            {{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency']) }}
-                            {{ __('each').' '.$plan['interval'] }}</span>
-                    </label>
-                </div>
-            </li>
-            @endforeach
-        </ul>
+        @include('subscriptions::public._plans-radio-buttons')
         <div class="account-subscription-footer">
             {!! BootForm::submit(__('I subscribe'))->addClass('account-subscription-footer-button') !!}
         </div>
