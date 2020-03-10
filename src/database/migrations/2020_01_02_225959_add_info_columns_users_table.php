@@ -16,7 +16,6 @@ class AddInfoColumnsUsersTable extends Migration
             $table->string('zip')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->integer('tax_amount')->default(0);
         });
     }
 
@@ -31,7 +30,6 @@ class AddInfoColumnsUsersTable extends Migration
             $table->dropColumn('zip');
             $table->dropColumn('city');
             $table->dropColumn('country');
-            $table->dropColumn('tax_amount');
         });
     }
 }

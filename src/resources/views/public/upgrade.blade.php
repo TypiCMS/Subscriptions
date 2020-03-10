@@ -14,7 +14,7 @@
     {!! BootForm::open()->action(route(app()->getLocale() .'::subscriptions-upgradePost')) !!}
     <ul>
         @foreach($plans as $name => $plan)
-            {!! BootForm::radio(ucfirst($name) . ' '. $plan['description'] .' <span class="text-muted small">'. $plan['amount']['value'] . ' ' . $plan['amount']['currency'] .' '. __('each') . ' ' . $plan['interval'] . '</span>', 'plan', $name) !!}
+            {!! BootForm::radio(ucfirst($name) . ' '. $plan['description'] .' <span class="text-muted small">'. Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency']) .' '. __('each') . ' ' . $plan['interval'] . '</span>', 'plan', $name) !!}
         @endforeach
     </ul>
     {!! BootForm::submit(__('Switch to this plan')) !!}

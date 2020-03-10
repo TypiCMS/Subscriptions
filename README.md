@@ -92,7 +92,7 @@ php artisan vendor:publish --provider="Laravel\Cashier\CashierServiceProvider" -
 You can customize the `/resources/views/vendor/cashier/` files as you like.
 
 ### Tax Management
-To specify the tax percentage a user pays on a subscription, edit the `tax_amount` column for the user in the database.
+To specify the tax percentage a user pays on a subscription, edit the `tax_percentage` column for the user in the database.
 
 The displayed price on the subscription has built-in tax calculation.
 
