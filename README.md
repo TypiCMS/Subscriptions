@@ -80,6 +80,17 @@ Configure the redirect URL of the first payment:
 
 Create a page linked to the Subscriptions module and navigate to it.
 
+
+### Customize Invoices
+
+Copy the Cashier package views using the following command: 
+
+```php
+php artisan vendor:publish --provider="Laravel\Cashier\CashierServiceProvider" --tag="cashier-views"
+```
+
+You can customize the `/resources/views/vendor/cashier/` files as you like.
+
 ## Additional information
 
 [Read the cashier-mollie documentation](https://github.com/laravel/cashier-mollie)
