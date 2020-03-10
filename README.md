@@ -68,14 +68,6 @@ Configure your subscription plans in `config/cashier_plans.php`.
 
 Manage any coupons in `config/cashier_coupons.php`. By default an example coupon is enabled, consider disabling it before deploying to production.
 
-Configure the redirect URL of the first payment:
-
-```php
-// config/cashier.php
-
-'redirect_url' => config('app.url').'/webhooks/cashier/check-payment/{payment_id}',
-```
-
 ### Setup your app
 
 Create a page linked to the Subscriptions module and navigate to it.
