@@ -95,14 +95,27 @@ class PublicController extends BasePublicController
         $user = Auth::user();
         $name = 'main';
 
-        if (!$user->subscribed($name, $plan)) {
-            $result = $user->newSubscription($name, $plan)->create();
+        if (! $user->subscribed($name, $plan)) {
+            try {
+                $result = $user->newSubscription(
+                    $name,
+                    $plan,
+                    ['redirectUrl' => config('app.url') . '/' . app()->getLocale() . '/webhooks/cashier/check-payment/{payment_id}']
+                )->create();
 
-            if (is_a($result, RedirectToCheckoutResponse::class)) {
-                return $result; // Redirect to Mollie checkout
+                if (is_a($result, RedirectToCheckoutResponse::class)) {
+                    return $result; // Redirect to Mollie checkout
+                }
+
+                return back()->with('success', __('You are now successfully subscribed.'));
+
+            } catch (Exception $e) {
+                report($e);
+                
+                return redirect()
+                    ->route(app()->getLocale() . '::subscriptions-profile')
+                    ->with('error', __('Your subscription could not be performed.'));
             }
-
-            return back()->with('success', __('You are now successfully subscribed.'));
         }
 
         return back()->with('error', __('You are already on the :plan plan', ['plan' => $plan]));
@@ -205,6 +218,7 @@ class PublicController extends BasePublicController
 
     public function checkPayment(Request $request, $payment_id)
     {
+
         try {
             $payment = Mollie::api()
                 ->payments()
