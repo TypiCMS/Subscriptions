@@ -2,8 +2,8 @@
 
 namespace TypiCMS\Modules\Subscriptions\Models;
 
-use TypiCMS\Modules\Users\Models\User;
 use Laravel\Cashier\Billable;
+use TypiCMS\Modules\Users\Models\User;
 
 class BillableUser extends User
 {
