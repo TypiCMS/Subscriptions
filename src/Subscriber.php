@@ -19,7 +19,7 @@ class Subscriber
         $amount = ((floatval($price) / 100) * $tax) + $price;
         $intAmount = $this->amountToInt($amount);
 
-        return $this->formatAmount($intAmount, $currency) . ' ' . $currency;
+        return $this->formatAmount($intAmount, $currency).' '.$currency;
     }
 
     public function amountToInt(string $amount, $currency = 'EUR')
@@ -43,6 +43,4 @@ class Subscriber
 
         return $moneyFormatter->format($money);
     }
-
-
 }
