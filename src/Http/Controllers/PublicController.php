@@ -103,10 +103,10 @@ class PublicController extends BasePublicController
 
         try {
             $result = $user->newSubscription(
-                    $name,
-                    $plan,
-                    ['redirectUrl' => config('app.url').'/'.app()->getLocale().'/webhooks/cashier/check-payment/{payment_id}']
-                )->create();
+                $name,
+                $plan,
+                ['redirectUrl' => config('app.url').'/'.app()->getLocale().'/webhooks/cashier/check-payment/{payment_id}']
+            )->create();
 
             if (is_a($result, RedirectToCheckoutResponse::class)) {
                 return $result; // Redirect to Mollie checkout
