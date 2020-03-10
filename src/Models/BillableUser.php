@@ -65,16 +65,31 @@ class BillableUser extends User
     {
         switch (app()->getLocale()) {
             case 'fr':
-                $locale = 'fr_BE';
-
+                $locale = 'fr_FR';
                 break;
+
             case 'nl':
-                $locale = 'nl_BE';
-
+                $locale = 'nl_NL';
                 break;
+
+            case 'de':
+                $locale = 'de_DE';
+                break;
+
+            case 'it':
+                $locale = 'it_IT';
+                break;
+
+            case 'es':
+                $locale = 'es_ES';
+                break;
+
+            case 'pt':
+                $locale = 'pt_PT';
+                break;
+
             default:
                 $locale = 'en_US';
-
                 break;
         }
 
