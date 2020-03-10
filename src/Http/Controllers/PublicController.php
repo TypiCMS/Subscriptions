@@ -59,7 +59,9 @@ class PublicController extends BasePublicController
     {
         Auth::user()->update($request->validated());
 
-        return redirect()->route(app()->getLocale().'::subscriptions-profile')->with('success', __('Your profile has been successfully updated.'));
+        return redirect()
+            ->route(app()->getLocale().'::subscriptions-profile')
+            ->with('success', __('Your profile has been successfully updated.'));
     }
 
     public function paymentMethodRevoke(Request $request, $id)
