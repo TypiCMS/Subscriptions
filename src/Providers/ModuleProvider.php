@@ -3,10 +3,13 @@
 namespace TypiCMS\Modules\Subscriptions\Providers;
 
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Subscriptions\Composers\SidebarViewComposer;
 use TypiCMS\Modules\Subscriptions\Console\Commands\Install;
+use TypiCMS\Modules\Subscriptions\Facades\SubscriberFacade;
+use TypiCMS\Modules\Subscriptions\Subscriber;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -40,6 +43,12 @@ class ModuleProvider extends ServiceProvider
         $this->app->view->composer('subscriptions::public.*', function ($view) {
             $view->page = TypiCMS::getPageLinkedToModule('subscriptions');
         });
+
+        /*
+         * Register the Subscriber Facade
+         */
+        $this->app->bind('Subscriber', Subscriber::class);
+        AliasLoader::getInstance()->alias('Subscriber', SubscriberFacade::class);
 
         /*
          * Schedule a periodic job to execute Cashier::run().

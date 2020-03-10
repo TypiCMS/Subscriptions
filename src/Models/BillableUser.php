@@ -25,11 +25,12 @@ class BillableUser extends User
         'zip',
         'city',
         'country',
+        'tax_amount',
     ];
 
     public function taxPercentage()
     {
-        return 21;
+        return $this->tax_amount;
     }
 
     /**
