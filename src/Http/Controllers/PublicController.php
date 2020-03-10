@@ -95,12 +95,12 @@ class PublicController extends BasePublicController
         $user = Auth::user();
         $name = 'main';
 
-        if (! $user->subscribed($name, $plan)) {
+        if (!$user->subscribed($name, $plan)) {
             try {
                 $result = $user->newSubscription(
                     $name,
                     $plan,
-                    ['redirectUrl' => config('app.url') . '/' . app()->getLocale() . '/webhooks/cashier/check-payment/{payment_id}']
+                    ['redirectUrl' => config('app.url').'/'.app()->getLocale().'/webhooks/cashier/check-payment/{payment_id}']
                 )->create();
 
                 if (is_a($result, RedirectToCheckoutResponse::class)) {
@@ -108,12 +108,11 @@ class PublicController extends BasePublicController
                 }
 
                 return back()->with('success', __('You are now successfully subscribed.'));
-
             } catch (Exception $e) {
                 report($e);
-                
+
                 return redirect()
-                    ->route(app()->getLocale() . '::subscriptions-profile')
+                    ->route(app()->getLocale().'::subscriptions-profile')
                     ->with('error', __('Your subscription could not be performed.'));
             }
         }
@@ -218,7 +217,6 @@ class PublicController extends BasePublicController
 
     public function checkPayment(Request $request, $payment_id)
     {
-
         try {
             $payment = Mollie::api()
                 ->payments()

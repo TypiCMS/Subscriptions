@@ -24,7 +24,6 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         Route::namespace($this->namespace)->group(function (Router $router) {
-
             foreach (locales() as $lang) {
                 $router->middleware('web')->get($lang.'/webhooks/cashier/check-payment/{payment_id}', ['uses' => 'PublicController@checkPayment']);
             }
