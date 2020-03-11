@@ -56,6 +56,18 @@ class BillableUser extends User
             'email' => $this->email,
             'name' => "$this->first_name $this->last_name",
             'locale' => $this->getLocale(),
+            'metadata' => $this->getMetadata(),
+        ];
+    }
+
+    public function getMetaData(): array
+    {
+        return [
+            'street' => $this->street,
+            'number' => $this->number,
+            'zip' => $this->zip,
+            'city' => $this->city,
+            'country' => $this->country,
         ];
     }
 
