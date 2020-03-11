@@ -1,12 +1,16 @@
-@extends('subscriptions::public.master')
+@extends('core::public.master')
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Your account'))
+@section('title', $page->title)
 
 @section('master')
 
-    <h1>@lang('Your account')</h1>
+<div class="page-content">
+
+    <header class="page-header">
+        <h1 class="page-title">{{ $page->title }}</h1>
+    </header>
 
     <div class="rich-content">{!! $page->present()->body !!}</div>
     @include('files::public._documents', ['model' => $page])
@@ -32,5 +36,7 @@
         </div>
 
     </div>
+
+</div>
 
 @endsection
