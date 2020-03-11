@@ -27,18 +27,18 @@ class PublicController extends BasePublicController
         $activeMandates = collect();
 
         try {
-            $customer = Mollie::api()
-                ->customers()
-                ->get($user->mollie_customer_id);
+            $customer = $user->asMollieCustomer();
         } catch (ApiException $exception) {
             report($exception);
         }
 
-        if ($customer !== null) {
-            foreach ($customer->mandates() as $mandate) {
-                if ($mandate->status === 'valid') {
-                    $activeMandates->push($mandate);
-                }
+        if ($customer === null) {
+            $customer = $user->createAsMollieCustomer();
+        }
+
+        foreach ($customer->mandates() as $mandate) {
+            if ($mandate->status === 'valid') {
+                $activeMandates->push($mandate);
             }
         }
 
