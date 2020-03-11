@@ -54,6 +54,14 @@ class BillableUser extends User
         return null;
     }
 
+    public function mollieCustomerFields(): array
+    {
+        return [
+            'email' => $this->email,
+            'name' => "$this->first_name $this->last_name",
+        ];
+    }
+
     /**
      * @return string
      *
