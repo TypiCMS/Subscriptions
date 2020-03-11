@@ -4,21 +4,23 @@
 
 @section('title', $page->title)
 
-@section('master')
+@section('content')
 
-<div class="page-content">
+<div class="account-content">
 
-    <header class="page-header">
-        <h1 class="page-title">{{ $page->title }}</h1>
+    <header class="account-header">
+        <div class="account-header-container">
+            <h1 class="account-header-title">{{ $page->title }}</h1>
+        </div>
     </header>
 
-    <div class="rich-content">{!! $page->present()->body !!}</div>
-    @include('files::public._documents', ['model' => $page])
-    @include('files::public._images', ['model' => $page])
-
-    @include('subscriptions::public._alerts')
-
     <div class="account">
+
+        <div class="rich-content">{!! $page->present()->body !!}</div>
+        @include('files::public._documents', ['model' => $page])
+        @include('files::public._images', ['model' => $page])
+
+        @include('subscriptions::public._alerts')
 
         <div class="account-row">
             <div class="account-column">
