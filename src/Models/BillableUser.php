@@ -55,6 +55,7 @@ class BillableUser extends User
         return [
             'email' => $this->email,
             'name' => "$this->first_name $this->last_name",
+            'locale' => $this->getLocale(),
         ];
     }
 
