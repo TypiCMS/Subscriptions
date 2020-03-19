@@ -1,4 +1,17 @@
 .account {
+    @extend .container-fluid;
+    padding-bottom: 5rem;
+    &-header {
+        background-image: linear-gradient(180deg, $white 40%, $gray-100 100%);
+        padding: 6rem 0 1rem;
+        margin-bottom: 2rem;
+        @include media-breakpoint-up(lg) {
+            padding-top: 4rem;
+        }
+        &-container {
+            @extend .container-fluid;
+        }
+    }
     &-row {
         @include make-row;
     }
@@ -84,15 +97,11 @@
             display: flex;
             justify-content: flex-end;
             &-button {
+                @extend .btn;
                 @extend .btn-sm;
                 @include button-variant($teal, $teal);
+                text-transform: none;
             }
         }
-    }
-    &-subscription {
-    }
-    &-payment-methods {
-    }
-    &-invoices {
     }
 }

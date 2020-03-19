@@ -41,22 +41,35 @@ class BillableUser extends User
     /**
      * Get the receiver information for the invoice.
      * Typically includes the name and some sort of (E-mail/physical) address.
-     *
-     * @return array An array of strings
      */
-    public function getInvoiceInformation()
+    public function getInvoiceInformation(): array
     {
         return [$this->first_name.' '.$this->last_name, $this->email, $this->street.' '.$this->number, $this->zip.' '.$this->city, $this->country];
     }
 
     /**
      * Get additional information to be displayed on the invoice. Typically a note provided by the customer.
-     *
-     * @return string|null
      */
-    public function getExtraBillingInformation()
+    public function getExtraBillingInformation(): ?string
     {
         return null;
+    }
+
+    public function mollieCustomerFields(): array
+    {
+        return [
+            'email' => $this->email,
+            'name' => "$this->first_name $this->last_name",
+            'locale' => $this->getLocale(),
+            'metadata' => [
+                'id' => $this->id,
+                'street' => $this->street,
+                'number' => $this->number,
+                'zip' => $this->zip,
+                'city' => $this->city,
+                'country' => $this->country,
+            ],
+        ];
     }
 
     /**

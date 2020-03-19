@@ -1,20 +1,26 @@
-@extends('subscriptions::public.master')
+@extends('core::public.master')
 
 @section('bodyClass', 'body-subscriptions body-subscriptions-index body-page body-page-'.$page->id)
 
-@section('title', __('Your account'))
+@section('title', $page->title)
 
-@section('master')
+@section('content')
 
-    <h1>@lang('Your account')</h1>
+<div class="account-content">
 
-    <div class="rich-content">{!! $page->present()->body !!}</div>
-    @include('files::public._documents', ['model' => $page])
-    @include('files::public._images', ['model' => $page])
-
-    @include('subscriptions::public._alerts')
+    <header class="account-header">
+        <div class="account-header-container">
+            <h1 class="account-header-title">{{ $page->title }}</h1>
+        </div>
+    </header>
 
     <div class="account">
+
+        <div class="rich-content">{!! $page->present()->body !!}</div>
+        @include('files::public._documents', ['model' => $page])
+        @include('files::public._images', ['model' => $page])
+
+        @include('subscriptions::public._alerts')
 
         <div class="account-row">
             <div class="account-column">
@@ -32,5 +38,7 @@
         </div>
 
     </div>
+
+</div>
 
 @endsection

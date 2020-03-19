@@ -4,7 +4,6 @@ namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Laravel\Cashier\Order\Order;
 use Laravel\Cashier\SubscriptionBuilder\RedirectToCheckoutResponse;
@@ -27,22 +26,22 @@ class PublicController extends BasePublicController
         $activeMandates = collect();
 
         try {
-            $customer = Mollie::api()
-                ->customers()
-                ->get($user->mollie_customer_id);
+            $customer = $user->asMollieCustomer();
         } catch (ApiException $exception) {
             report($exception);
         }
 
-        if ($customer !== null) {
-            foreach ($customer->mandates() as $mandate) {
-                if ($mandate->status === 'valid') {
-                    $activeMandates->push($mandate);
-                }
+        if ($customer === null) {
+            $customer = $user->createAsMollieCustomer();
+        }
+
+        foreach ($customer->mandates() as $mandate) {
+            if ($mandate->status === 'valid') {
+                $activeMandates->push($mandate);
             }
         }
 
-        $invoices = Auth::user()->orders->invoices();
+        $invoices = $user->orders->invoices();
 
         return view('subscriptions::public.index')
             ->with(compact('user', 'plans', 'activeMandates', 'invoices'));
@@ -57,7 +56,7 @@ class PublicController extends BasePublicController
 
     public function profileUpdate(SubscriptionsProfileUpdate $request)
     {
-        Auth::user()->update($request->validated());
+        $request->user()->update($request->validated());
 
         return redirect()
             ->route(app()->getLocale().'::subscriptions-profile')
@@ -91,7 +90,7 @@ class PublicController extends BasePublicController
     {
         $plan = $request->input('plan');
 
-        $user = Auth::user();
+        $user = $request->user();
         $name = 'main';
 
         if ($user->subscribed($name, $plan)) {
@@ -122,7 +121,7 @@ class PublicController extends BasePublicController
     public function cancel(Request $request)
     {
         try {
-            $user = Auth::user();
+            $user = $request->user();
 
             if (!$user->subscription('main')->cancelled() && !$user->subscription('main')->onGracePeriod()) {
                 $user->subscription('main')->cancel();
@@ -144,10 +143,10 @@ class PublicController extends BasePublicController
         }
     }
 
-    public function resume()
+    public function resume(Request $request)
     {
         try {
-            Auth::user()
+            $request->user()
                 ->subscription('main')
                 ->resume();
 
@@ -163,12 +162,12 @@ class PublicController extends BasePublicController
         }
     }
 
-    public function upgrade()
+    public function upgrade(Request $request)
     {
         $models = collect();
         $plans = collect(config('cashier_plans.plans'));
 
-        $plans->forget(Auth::user()->subscription('main')->plan);
+        $plans->forget($request->user()->subscription('main')->plan);
 
         return view('subscriptions::public.upgrade')->with(compact('models', 'plans'));
     }
@@ -176,7 +175,7 @@ class PublicController extends BasePublicController
     public function upgradePost(SubscriptionsPlan $request)
     {
         try {
-            Auth::user()
+            $request->user()
                 ->subscription('main')
                 ->swap($request->input('plan'));
         } catch (Exception $e) {
@@ -196,7 +195,7 @@ class PublicController extends BasePublicController
     {
         $order = Order::where('number', $id)->firstOrFail();
 
-        if ($order->owner_id !== Auth::user()->id) {
+        if ($order->owner_id !== $request->user()->id) {
             abort(403);
         }
 
@@ -207,7 +206,7 @@ class PublicController extends BasePublicController
     {
         $order = Order::where('number', $id)->firstOrFail();
 
-        if ($order->owner_id !== Auth::user()->id) {
+        if ($order->owner_id !== $request->user()->id) {
             abort(403);
         }
 
