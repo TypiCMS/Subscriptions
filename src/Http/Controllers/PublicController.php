@@ -67,10 +67,7 @@ class PublicController extends BasePublicController
     public function paymentMethodRevoke(Request $request, $id)
     {
         try {
-            $customer = Mollie::api()
-                ->customers()
-                ->get(Auth::user()->mollie_customer_id);
-            $customer->getMandate($id)->revoke();
+            $request->user()->mollieMandate()->revoke();
 
             return redirect()
                 ->route(app()->getLocale().'::subscriptions-profile')
