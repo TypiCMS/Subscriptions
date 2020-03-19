@@ -56,7 +56,7 @@ class ModuleProvider extends ServiceProvider
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
             $schedule->command('cashier:run')
-                ->daily()
+                ->everyFiveMinutes()
                 ->withoutOverlapping();
         });
     }
