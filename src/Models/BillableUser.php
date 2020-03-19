@@ -26,6 +26,11 @@ class BillableUser extends User
         'city',
         'country',
         'tax_percentage',
+        'mollie_customer_id',
+        'mollie_mandate_id',
+        'tax_percentage',
+        'trial_ends_at',
+        'extra_billing_information'
     ];
 
     public function taxPercentage()
