@@ -34,8 +34,11 @@
                     <div class="col">
                         {!! BootForm::text(__('Street'), 'street')->required() !!}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         {!! BootForm::text(__('Number'), 'number')->required() !!}
+                    </div>
+                    <div class="col-md-2">
+                        {!! BootForm::text(__('Box'), 'box') !!}
                     </div>
                 </div>
                 {!! BootForm::text(__('City'), 'city')->required() !!}

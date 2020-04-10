@@ -28,6 +28,7 @@ class SubscriptionsProfileUpdate extends FormRequest
             'last_name' => 'required|string|max:255',
             'street' => 'required|string|max:255',
             'number' => 'required|string|max:255',
+            'box' => 'required|string|max:255',
             'zip' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
