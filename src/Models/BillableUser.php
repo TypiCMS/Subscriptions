@@ -121,12 +121,11 @@ class BillableUser extends User
         return $locale;
     }
 
-    public function hasRunningSubscription() : bool
+    public function hasRunningSubscription(): bool
     {
         $hasActiveSubscription = false;
 
         foreach ($this->subscriptions as $subscription) {
-
             if ($subscription->active()) {
                 $hasActiveSubscription = true;
             }
