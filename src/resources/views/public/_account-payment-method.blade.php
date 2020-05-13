@@ -27,7 +27,9 @@
             </li>
         </ul>
         <div class="account-payment-methods-footer">
+            @if(! request()->user()->hasRunningSubscription())
             <a class="account-payment-methods-edit-button" href="{{ route(app()->getLocale().'::subscriptions-paymentmethod-revoke', $mandate->id) }}">@lang('Remove')</a>
+            @endif
         </div>
         @endforeach
     @else

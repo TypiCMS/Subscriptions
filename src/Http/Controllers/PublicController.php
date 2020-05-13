@@ -65,6 +65,12 @@ class PublicController extends BasePublicController
 
     public function paymentMethodRevoke(Request $request, $id)
     {
+        if ($request->user()->hasRunningSubscription()) {
+            return redirect()
+                ->route(app()->getLocale().'::subscriptions-profile')
+                ->with('error', __('Your payment method could not be revoked as you have a running subscription.'));
+        }
+
         try {
             $request->user()->mollieMandate()->revoke();
 
