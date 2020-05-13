@@ -5,16 +5,18 @@
     @if ($activeMandates->count() > 0)
         @foreach ($activeMandates as $mandate)
         <ul class="account-payment-methods-list">
-            @if ($mandate->details->consumerName !== null)
+            @isset($mandate->details->consumerName)
             <li class="account-payment-methods-item">
                 <span class="account-payment-methods-item-label">@lang('Name')</span>
                 <span class="account-payment-methods-item-value">{{ $mandate->details->consumerName }}</span>
             </li>
-            @endif
+            @endisset
+            @isset($mandate->details->consumerAccount)
             <li class="account-payment-methods-item">
                 <span class="account-payment-methods-item-label">@lang('Account')</span>
                 <span class="account-payment-methods-item-value">{{ $mandate->details->consumerAccount }}</span>
             </li>
+            @endisset
             <li class="account-payment-methods-item">
                 <span class="account-payment-methods-item-label">@lang('Method')</span>
                 <span class="account-payment-methods-item-value">{{ $mandate->method }}</span>
