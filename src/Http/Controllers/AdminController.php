@@ -2,10 +2,10 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Subscriptions\Http\Requests\FormRequest;
 use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
 class AdminController extends BaseAdminController
@@ -15,8 +15,10 @@ class AdminController extends BaseAdminController
         return view('subscriptions::admin.index');
     }
 
-    public function edit(Subscription $subscription): View
+    public function edit(int $subscriptionId): View
     {
+        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
+
         return view('subscriptions::admin.edit')
             ->with(['model' => $subscription]);
     }
@@ -35,5 +37,34 @@ class AdminController extends BaseAdminController
         $subscription->update($data);
 
         return $this->redirect($request, $subscription);
+    }
+
+    public function cancel(int $subscriptionId, FormRequest $request): RedirectResponse
+    {
+        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
+
+        try {
+            $user = $subscription->owner;
+
+            if (!$user->subscription('main')->cancelled() && !$user->subscription('main')->onGracePeriod()) {
+                $user->subscription('main')->cancel();
+
+                return redirect()
+                    ->route('admin::edit-subscription', $subscription)
+                    ->with('success', __('The subscription was sucessfully cancelled.'));
+            }
+
+            $user->subscription('main')->resume();
+
+            return redirect()
+                ->route('admin::edit-subscription', $subscription)
+                ->with('success', __('The subscription was sucessfully resumed.'));
+        } catch (Exception $e) {
+            report($e);
+
+            return redirect()
+                ->route('admin::edit-subscription', $subscription)
+                ->with('error', __('An error occured while canceling the subscription.'));
+        }
     }
 }

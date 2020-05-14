@@ -11,7 +11,9 @@
         </h1>
     </div>
 
-    {!! BootForm::open()->put()->action(route('admin::update-subscription', $model->id))->multipart()->role('form') !!}
+    @include('subscriptions::public._alerts')
+
+    {!! BootForm::open()->put()->action(route('admin::cancel-subscription', $model->id))->role('form') !!}
     {!! BootForm::bind($model) !!}
         @include('subscriptions::admin._form')
     {!! BootForm::close() !!}
