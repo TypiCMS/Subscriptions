@@ -61,7 +61,6 @@ class RouteServiceProvider extends ServiceProvider
                 $router->get('subscriptions/{subscription}/edit', 'AdminController@edit')->name('admin::edit-subscription')->middleware('can:update-subscription');
                 $router->put('subscriptions/{subscription}', 'AdminController@update')->name('admin::update-subscription')->middleware('can:update-subscription');
                 $router->put('subscriptions/{subscription}', 'AdminController@cancel')->name('admin::cancel-subscription')->middleware('can:update-subscription');
-
             });
 
             /*
