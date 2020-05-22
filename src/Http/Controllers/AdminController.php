@@ -23,22 +23,6 @@ class AdminController extends BaseAdminController
             ->with(['model' => $subscription]);
     }
 
-    public function store(FormRequest $request): RedirectResponse
-    {
-        $data = $request->all();
-        $model = Subscription::create($data);
-
-        return $this->redirect($request, $model);
-    }
-
-    public function update(Subscription $subscription, FormRequest $request): RedirectResponse
-    {
-        $data = $request->all();
-        $subscription->update($data);
-
-        return $this->redirect($request, $subscription);
-    }
-
     public function cancel(int $subscriptionId, FormRequest $request): RedirectResponse
     {
         $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
