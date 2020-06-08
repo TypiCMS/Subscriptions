@@ -22,6 +22,7 @@ class BillableUser extends User
         'email_verified_at',
         'street',
         'number',
+        'box',
         'zip',
         'city',
         'country',

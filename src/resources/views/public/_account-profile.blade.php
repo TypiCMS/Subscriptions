@@ -14,7 +14,7 @@
         <li class="account-profile-item">
             <span class="account-profile-item-label">@lang('Address')</span>
             <address class="account-profile-item-value">
-                {{ $user->street }} {{ $user->number }}<br/>
+                {{ $user->street }} {{ $user->number }} {{ $user->box }}<br/>
                 {{ $user->zip }} {{ $user->city }}<br/>
                 {{ $user->country }}
             </address>
