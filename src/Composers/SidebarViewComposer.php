@@ -14,9 +14,8 @@ class SidebarViewComposer
         if (Gate::denies('see-all-subscriptions')) {
             return;
         }
-        $view->sidebar->group(__('Content'), function (SidebarGroup $group) {
-            $group->id = 'content';
-            $group->weight = 30;
+        $view->sidebar->group(__('Users and roles'), function (SidebarGroup $group) {
+            $group->id = 'users';
             $group->addItem(__('Subscriptions'), function (SidebarItem $item) {
                 $item->id = 'subscriptions';
                 $item->icon = config('typicms.subscriptions.sidebar.icon');

@@ -6,6 +6,6 @@ return [
     ],
     'sidebar' => [
         'icon' => 'icon fa fa-fw fa-credit-card',
-        'weight' => 8,
+        'weight' => 130,
     ],
 ];
