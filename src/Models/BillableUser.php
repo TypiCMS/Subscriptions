@@ -30,7 +30,7 @@ class BillableUser extends User
         'mollie_mandate_id',
         'tax_percentage',
         'trial_ends_at',
-        'extra_billing_information'
+        'extra_billing_information',
     ];
 
     public function taxPercentage()
