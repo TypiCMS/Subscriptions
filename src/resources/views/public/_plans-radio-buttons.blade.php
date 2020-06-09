@@ -6,8 +6,7 @@
             <label class="form-check-label" for="{{ 'plan-'.$name }}">
                 <span>@lang($name)</span><br>
                 <span class="text-muted small">
-                    {{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }}
-                    {{ __('each').' '.$plan['interval'] }}</span>
+                    @lang(':amount / '.$plan['interval'], ['amount' => Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale())])
             </label>
         </div>
     </li>
