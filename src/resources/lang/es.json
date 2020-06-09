@@ -1,5 +1,7 @@
 {
     "# subscriptions": "No hay suscripciones | 1 suscripción | {count} suscripciones",
+    ":amount / 1 month": ":amount / mes",
+    ":amount / 1 year": ":amount / año",
     "Action": "Acción",
     "Amount": "Cantidad",
     "Are you sure you want to cancel your subscription to :name?": "¿Estás seguro de que quieres cancelar tu suscripción a :name?",
@@ -7,6 +9,7 @@
     "Balance after": "Equilibrio después",
     "Balance applied": "Equilibrio aplicado",
     "Balance before": "Equilibrio antes de",
+    "Box": "Box",
     "Cancel my subscription.": "Cancelar mi suscripción.",
     "City": "Ciudad",
     "Country": "País",
