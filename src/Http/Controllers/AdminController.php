@@ -31,20 +31,20 @@ class AdminController extends BaseAdminController
                 $user->subscription('main')->cancel();
 
                 return redirect()
-                    ->route('admin::edit-subscription', $subscription)
+                    ->back()
                     ->with('success', __('The subscription was sucessfully cancelled.'));
             }
 
             $user->subscription('main')->resume();
 
             return redirect()
-                ->route('admin::edit-subscription', $subscription)
+                ->back()
                 ->with('success', __('The subscription was sucessfully resumed.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route('admin::edit-subscription', $subscription)
+                ->back()
                 ->with('error', __($e->getMessage()));
         }
     }
