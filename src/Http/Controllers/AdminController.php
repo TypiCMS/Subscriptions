@@ -2,6 +2,7 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
@@ -44,7 +45,7 @@ class AdminController extends BaseAdminController
 
             return redirect()
                 ->route('admin::edit-subscription', $subscription)
-                ->with('error', __('An error occured while canceling the subscription.'));
+                ->with('error', __($e->getMessage()));
         }
     }
 }
