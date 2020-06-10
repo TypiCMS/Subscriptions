@@ -15,18 +15,14 @@ class AdminController extends BaseAdminController
         return view('subscriptions::admin.index');
     }
 
-    public function edit(int $subscriptionId): View
+    public function edit(Subscription $subscription): View
     {
-        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
-
         return view('subscriptions::admin.edit')
             ->with(['model' => $subscription]);
     }
 
-    public function cancel(int $subscriptionId, FormRequest $request): RedirectResponse
+    public function cancel(Subscription $subscription, FormRequest $request): RedirectResponse
     {
-        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
-
         try {
             $user = $subscription->owner;
 
