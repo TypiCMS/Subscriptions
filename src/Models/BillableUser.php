@@ -82,7 +82,7 @@ class BillableUser extends User
      */
     public function getLocale()
     {
-        switch (app()->getLocale()) {
+        switch ($this->locale) {
             case 'fr':
                 $locale = 'fr_FR';
 
