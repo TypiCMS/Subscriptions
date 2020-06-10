@@ -15,9 +15,9 @@ class AdminController extends BaseAdminController
         return view('subscriptions::admin.index');
     }
 
-    public function edit(Subscription $subscription): View
+    public function show(Subscription $subscription): View
     {
-        return view('subscriptions::admin.edit')
+        return view('subscriptions::admin.show')
             ->with(['model' => $subscription]);
     }
 
