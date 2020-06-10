@@ -13,12 +13,12 @@
 
     <div class="btn-toolbar mb-4">
         @if($model->status == 'active')
-            {!! BootForm::open()->put()->action(route('admin::cancel-subscription', $model->id)) !!}
                 <button class="btn btn-sm btn-danger mr-2" type="submit">{{ __('Cancel subscription') }}</button>
+            {!! BootForm::open()->action(route('admin::cancel-subscription', $model)) !!}
             {!! BootForm::close() !!}
         @else
-            {!! BootForm::open()->put()->action(route('admin::cancel-subscription', $model->id)) !!}
                 <button class="btn btn-sm btn-success mr-2" type="submit">{{ __('Resume subscription') }}</button>
+            {!! BootForm::open()->action(route('admin::resume-subscription', $model)) !!}
             {!! BootForm::close() !!}
         @endif
     </div>

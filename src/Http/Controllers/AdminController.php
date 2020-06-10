@@ -27,19 +27,30 @@ class AdminController extends BaseAdminController
         try {
             $user = $subscription->owner;
 
-            if (!$user->subscription('main')->cancelled() && !$user->subscription('main')->onGracePeriod()) {
-                $user->subscription('main')->cancel();
+            $user->subscription('main')->cancel();
 
-                return redirect()
-                    ->back()
-                    ->with('success', __('The subscription was sucessfully cancelled.'));
-            }
+            return redirect()
+                ->back()
+                ->with('message', __('The subscription was sucessfully cancelled.'));
+        } catch (Exception $e) {
+            report($e);
+
+            return redirect()
+                ->back()
+                ->with('error', __($e->getMessage()));
+        }
+    }
+
+    public function resume(Subscription $subscription, FormRequest $request): RedirectResponse
+    {
+        try {
+            $user = $subscription->owner;
 
             $user->subscription('main')->resume();
 
             return redirect()
                 ->back()
-                ->with('success', __('The subscription was sucessfully resumed.'));
+                ->with('message', __('The subscription was sucessfully resumed.'));
         } catch (Exception $e) {
             report($e);
 
