@@ -26,7 +26,7 @@
     {!! BootForm::hidden('id') !!}
 
     <table class="table table-sm table-striped">
-        <tr><th>@lang('Plan')</th> <td>{{ $model->plan }}</td></tr>
+        <tr><th>@lang('Plan')</th> <td>@lang($model->plan)</td></tr>
         <tr><th>@lang('Member')</th> <td>{{ $model->owner->first_name }} {{ $model->owner->last_name }}</td></tr>
         <tr><th>@lang('Next plan')</th> <td>{{ $model->next_plan }}</td></tr>
         {{-- <tr><th>@lang('Quantity')</th> <td>{{ $model->quantity }}</td></tr> --}}
