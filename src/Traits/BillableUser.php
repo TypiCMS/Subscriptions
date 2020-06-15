@@ -4,7 +4,7 @@ namespace TypiCMS\Modules\Subscriptions\Traits;
 
 use Laravel\Cashier\Billable;
 
-Trait BillableUser
+trait BillableUser
 {
     use Billable;
 
