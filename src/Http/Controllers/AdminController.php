@@ -2,6 +2,7 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
@@ -15,40 +16,47 @@ class AdminController extends BaseAdminController
         return view('subscriptions::admin.index');
     }
 
-    public function edit(int $subscriptionId): View
+    public function show(Subscription $subscription): View
     {
-        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
-
-        return view('subscriptions::admin.edit')
+        return view('subscriptions::admin.show')
             ->with(['model' => $subscription]);
     }
 
-    public function cancel(int $subscriptionId, FormRequest $request): RedirectResponse
+    public function cancel(Subscription $subscription, FormRequest $request): RedirectResponse
     {
-        $subscription = Subscription::disableCache()->findOrFail($subscriptionId);
-
         try {
             $user = $subscription->owner;
 
-            if (!$user->subscription('main')->cancelled() && !$user->subscription('main')->onGracePeriod()) {
-                $user->subscription('main')->cancel();
-
-                return redirect()
-                    ->route('admin::edit-subscription', $subscription)
-                    ->with('success', __('The subscription was sucessfully cancelled.'));
-            }
-
-            $user->subscription('main')->resume();
+            $user->subscription('main')->cancel();
 
             return redirect()
-                ->route('admin::edit-subscription', $subscription)
-                ->with('success', __('The subscription was sucessfully resumed.'));
+                ->back()
+                ->with('message', __('The subscription was sucessfully cancelled.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route('admin::edit-subscription', $subscription)
-                ->with('error', __('An error occured while canceling the subscription.'));
+                ->back()
+                ->with('error', __($e->getMessage()));
+        }
+    }
+
+    public function resume(Subscription $subscription, FormRequest $request): RedirectResponse
+    {
+        try {
+            $user = $subscription->owner;
+
+            $user->subscription('main')->resume();
+
+            return redirect()
+                ->back()
+                ->with('message', __('The subscription was sucessfully resumed.'));
+        } catch (Exception $e) {
+            report($e);
+
+            return redirect()
+                ->back()
+                ->with('error', __($e->getMessage()));
         }
     }
 }
