@@ -17,7 +17,7 @@ It allows you to setup a subscriptions management system based on [Laravel Cashi
 composer require typicms/subscriptions
 ```
 
-Add the service provider:
+### Add the service provider:
 
 ```php
 // config/app.php
@@ -34,24 +34,37 @@ TypiCMS\Modules\Subscriptions\Providers\ModuleProvider::class,
 
 ### Configure your app
 
-Add the cashier model and the mollie key in your environment file:
+Add the cashier model and the mollie key in your `.env` environment file:
 
 ```php
-// .env
-
-CASHIER_MODEL=TypiCMS\Modules\Subscriptions\Models\BillableUser
+CASHIER_MODEL=TypiCMS\Modules\Users\Models\User
 MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
 
-Change the model class of the authentication configuration:
-
+### Publish the Users module.
+If not already done.
 ```php
-// config/auth.php
+php artisan typicms:publish Users
+```
+ [More information can be found here](https://github.com/TypiCMS/Base#publish-a-module)
 
-'users' => [
-    'driver' => 'eloquent',
-    'model' => TypiCMS\Modules\Subscriptions\Models\BillableUser::class,
-],
+### Mass-assignement
+If needed, allow the following fields to be fillable.
+```php
+protected $fillable = [
+     'street',
+     'number',
+     'zip',
+     'city',
+     'country',
+     'box',
+     'tax_percentage',
+     'mollie_customer_id',
+     'mollie_mandate_id',
+     'tax_percentage',
+     'trial_ends_at',
+     'extra_billing_information'
+ ];
 ```
 
 ### Run the installation script

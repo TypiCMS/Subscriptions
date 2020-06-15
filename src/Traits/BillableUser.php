@@ -1,37 +1,12 @@
 <?php
 
-namespace TypiCMS\Modules\Subscriptions\Models;
+namespace TypiCMS\Modules\Subscriptions\Traits;
 
 use Laravel\Cashier\Billable;
-use TypiCMS\Modules\Users\Models\User;
 
-class BillableUser extends User
+Trait BillableUser
 {
     use Billable;
-
-    protected $table = 'users';
-
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'password',
-        'activated',
-        'superuser',
-        'api_token',
-        'email_verified_at',
-        'street',
-        'number',
-        'zip',
-        'city',
-        'country',
-        'tax_percentage',
-        'mollie_customer_id',
-        'mollie_mandate_id',
-        'tax_percentage',
-        'trial_ends_at',
-        'extra_billing_information'
-    ];
 
     public function taxPercentage()
     {
