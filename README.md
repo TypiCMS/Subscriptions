@@ -1,5 +1,7 @@
 # Subscriptions
 
+![](screenshot.png)
+
 This module is part of [TypiCMS](https://github.com/TypiCMS/Base), a multilingual CMS based on the [Laravel framework](https://github.com/laravel/framework).
 
 It allows you to setup a subscriptions management system based on [Laravel Cashier for Mollie](https://github.com/laravel/cashier-mollie).
