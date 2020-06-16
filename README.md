@@ -85,6 +85,8 @@ Manage any coupons in `config/cashier_coupons.php`. By default an example coupon
 
 Create a page linked to the Subscriptions module and navigate to it.
 
+### Pre-build Plans Template 
+Quickly build an effective pricing table for your potential customers with the template created under `/plans` and linked to the `PublicController@plans` controller.
 
 ### Customize Invoices
 

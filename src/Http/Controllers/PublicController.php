@@ -243,4 +243,14 @@ class PublicController extends BasePublicController
                 ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         }
     }
+
+    public function plans(Request $request)
+    {
+        $user = $request->user();
+
+        $plans = collect(config('cashier_plans.plans'));
+
+        return view('subscriptions::public.plans')
+            ->with(compact('user', 'plans'));
+    }
 }

@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                             $router->get($uri.'/plans/resume', $options + ['uses' => 'PublicController@resume'])->name($lang.'::subscriptions-resume');
                             $router->get($uri.'/invoice/{id}', $options + ['uses' => 'PublicController@invoice'])->name($lang.'::subscriptions-invoice');
                             $router->get($uri.'/invoice/{id}/download', $options + ['uses' => 'PublicController@downloadInvoice'])->name($lang.'::subscriptions-download-invoice');
+                            $router->get($lang.'/plans', $options + ['uses' => 'PublicController@plans'])->name($lang.'::subscriptions-plans');
                         }
                     }
                 });
