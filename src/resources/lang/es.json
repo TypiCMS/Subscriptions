@@ -1,7 +1,7 @@
 {
     "# subscriptions": "No hay suscripciones | 1 suscripción | {count} suscripciones",
-    ":amount / 1 month": ":amount / mes",
-    ":amount / 1 year": ":amount / año",
+    "/ 1 month": "/ mes",
+    "/ 1 year": "/ año",
     "Action": "Acción",
     "Amount": "Cantidad",
     "Are you sure you want to cancel your subscription to :name?": "¿Estás seguro de que quieres cancelar tu suscripción a :name?",

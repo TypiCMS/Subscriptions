@@ -1,3 +1,5 @@
 {
-    "# subscriptions": "No subscriptions | 1 subscription | {count} subscriptions"
+    "# subscriptions": "No subscriptions | 1 subscription | {count} subscriptions",
+    "/ 1 month": "/ month",
+    "/ 1 year": "/ year"
 }

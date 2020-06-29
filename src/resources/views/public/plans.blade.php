@@ -18,7 +18,7 @@
                         <h4 class="my-0 font-weight-normal">{{ ucfirst(__($name)) }}</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">{{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }} <small class="text-muted d-inline-block">/ {{ $plan['interval'] }}</small></h1>
+                        <h1 class="card-title pricing-card-title">{{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }} <small class="text-muted d-inline-block">@lang('/ '.$plan['interval'])</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>@lang($plan['description'])</li>
                         </ul>

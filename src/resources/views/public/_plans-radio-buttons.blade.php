@@ -7,7 +7,7 @@
                 <span class="account-subscription-item-name">@lang($name)</span>
                 <span class="account-subscription-item-description">@lang($plan['description'])</span>
                 <span class="account-subscription-item-amount">
-                    @lang(':amount / '.$plan['interval'], ['amount' => Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale())])
+                    {{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }} <small class="text-muted">@lang('/ '.$plan['interval'])</small>
                 </span>
             </label>
         </div>
