@@ -2,6 +2,7 @@
 
 namespace TypiCMS\Modules\Subscriptions\Http\Controllers;
 
+use Dompdf\Options;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -206,7 +207,10 @@ class PublicController extends BasePublicController
             abort(403);
         }
 
-        return $order->invoice()->download();
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultPaperSize', 'A4');
+
+        return $order->invoice()->download([], 'cashier::receipt', $pdfOptions);
     }
 
     public function checkPayment(Request $request, $payment_id)
