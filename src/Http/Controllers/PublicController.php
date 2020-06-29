@@ -119,8 +119,8 @@ class PublicController extends BasePublicController
             report($e);
 
             return redirect()
-                    ->route(app()->getLocale().'::subscriptions-profile')
-                    ->with('error', __('Your subscription could not be performed.'));
+                ->route(app()->getLocale().'::subscriptions-profile')
+                ->with('error', __('Your subscription could not be performed.'));
         }
     }
 
