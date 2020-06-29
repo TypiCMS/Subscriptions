@@ -41,6 +41,9 @@
                 </div>
             @endforeach
         </div>
+
+        <p class="text-center mb-5"><a class="btn btn-light" href="{{ route($lang.'::subscriptions-profile') }}">@lang('I will subscribe later')</a></p>
+
     </div>
 
 @endsection
