@@ -48,7 +48,15 @@
             @endforeach
         </div>
 
-        <p class="text-center mb-5"><a class="btn btn-light" href="{{ route($lang.'::subscriptions-profile') }}">@lang('I will subscribe later')</a></p>
+        <p class="text-center mb-5">
+            <a class="btn btn-light" href="{{ route($lang.'::subscriptions-profile') }}">
+                @if($user->subscribed('main'))
+                    @lang('Cancel')
+                @else
+                    @lang('I will subscribe later')
+                @endif
+            </a>
+        </p>
 
     </div>
 
