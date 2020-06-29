@@ -33,7 +33,7 @@
                             @else
                                 {!! BootForm::open()->action(route($lang.'::subscriptions-subscribe')) !!}
                                 {!! BootForm::hidden('plan')->value($name) !!}
-                                <button type="submit" class="btn btn-lg btn-block btn-primary">@lang('Subscribe')</button>
+                                <button type="submit" class="btn btn-lg btn-block btn-primary">@lang('I subscribe')</button>
                                 {!! BootForm::close() !!}
                             @endif
                         @endif
