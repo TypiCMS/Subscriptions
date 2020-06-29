@@ -168,7 +168,7 @@ class PublicController extends BasePublicController
         }
     }
 
-    public function upgradePost(SubscriptionsPlan $request)
+    public function upgrade(SubscriptionsPlan $request)
     {
         try {
             $request->user()
