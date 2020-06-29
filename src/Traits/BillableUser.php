@@ -8,11 +8,6 @@ trait BillableUser
 {
     use Billable;
 
-    public function taxPercentage()
-    {
-        return $this->tax_percentage;
-    }
-
     /**
      * Get the receiver information for the invoice.
      * Typically includes the name and some sort of (E-mail/physical) address.
