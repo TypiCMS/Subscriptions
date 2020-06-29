@@ -41,13 +41,13 @@ class RouteServiceProvider extends ServiceProvider
                             $router->post($uri.'/edit', $options + ['uses' => 'PublicController@profileUpdate'])->name($lang.'::subscriptions-profile-update');
                             $router->get($uri.'/payment-method/{id}', $options + ['uses' => 'PublicController@paymentMethodRevoke'])->name($lang.'::subscriptions-paymentmethod-revoke');
                             $router->post($uri.'/payment-method', $options + ['uses' => 'PublicController@paymentMethodUpdate'])->name($lang.'::subscriptions-paymentmethod-update');
+                            $router->get($uri.'/plans', $options + ['uses' => 'PublicController@plans'])->name($lang.'::subscriptions-plans');
                             $router->post($uri.'/plans', $options + ['uses' => 'PublicController@subscribe'])->name($lang.'::subscriptions-subscribe');
                             $router->post($uri.'/plans/upgrade', $options + ['uses' => 'PublicController@upgrade'])->name($lang.'::subscriptions-upgrade');
                             $router->get($uri.'/plans/cancel', $options + ['uses' => 'PublicController@cancel'])->name($lang.'::subscriptions-cancel');
                             $router->get($uri.'/plans/resume', $options + ['uses' => 'PublicController@resume'])->name($lang.'::subscriptions-resume');
                             $router->get($uri.'/invoice/{id}', $options + ['uses' => 'PublicController@invoice'])->name($lang.'::subscriptions-invoice');
                             $router->get($uri.'/invoice/{id}/download', $options + ['uses' => 'PublicController@downloadInvoice'])->name($lang.'::subscriptions-download-invoice');
-                            $router->get($lang.'/plans', $options + ['uses' => 'PublicController@plans'])->name($lang.'::subscriptions-plans');
                         }
                     }
                 });
