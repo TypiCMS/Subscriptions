@@ -168,16 +168,6 @@ class PublicController extends BasePublicController
         }
     }
 
-    public function upgrade(Request $request)
-    {
-        $models = collect();
-        $plans = collect(config('cashier_plans.plans'));
-
-        $plans->forget($request->user()->subscription('main')->plan);
-
-        return view('subscriptions::public.upgrade')->with(compact('models', 'plans'));
-    }
-
     public function upgradePost(SubscriptionsPlan $request)
     {
         try {
