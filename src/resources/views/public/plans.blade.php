@@ -6,11 +6,18 @@
 
 @section('content')
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">@lang('Subscriptions')</h1>
-        <p class="lead">@lang('Quickly build an effective pricing table for your potential customers with this template.')</p>
+<div class="account-content">
+
+    <header class="account-header">
+        <div class="account-header-container">
+            <h1 class="text-center account-header-title">@lang('Your subscription')</h1>
+        </div>
+    </header>
+
+    <div class="mt-5 mb-5 mx-auto text-center">
         <p>@lang('Please choose the affiliation that best suits you.')</p>
     </div>
+
     <div class="container">
         <div class="card-deck mb-3 text-center">
             @foreach ($plans as $name => $plan)
@@ -18,11 +25,9 @@
                     <div class="card-header">
                         <h4 class="my-0 font-weight-normal">{{ ucfirst(__($name)) }}</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h1 class="card-title pricing-card-title">{{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }} <small class="text-muted d-inline-block">@lang('/ '.$plan['interval'])</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>@lang($plan['description'])</li>
-                        </ul>
+                        <p class="mt-3 mb-4 flex-grow-1">@lang($plan['description'])</p>
                         @if($user->subscribed('main', $name))
                             <button type="button" class="btn btn-lg btn-block btn-outline-primary disabled">@lang('Current subscription')</button>
                         @else
@@ -46,5 +51,7 @@
         <p class="text-center mb-5"><a class="btn btn-light" href="{{ route($lang.'::subscriptions-profile') }}">@lang('I will subscribe later')</a></p>
 
     </div>
+
+</div>
 
 @endsection
