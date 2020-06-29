@@ -18,7 +18,7 @@
         @else
             <div class="account-subscription-body">
                 <p>@lang('You are subscribed to the :name plan.', ['name' => __($user->subscription('main')->plan)])</p>
-                <p><a class="small text-danger" onclick="return confirm('@lang('Are you sure you want to cancel your subscription to :name?', ['name' => $user->subscription('main')->plan])')" href="{{ route($lang.'::subscriptions-cancel') }}">@lang('Cancel my subscription.')</a></p>
+                <p><a class="small text-danger" onclick="return confirm('@lang('Are you sure you want to cancel your subscription to :name?', ['name' => __($user->subscription('main')->plan)])')" href="{{ route($lang.'::subscriptions-cancel') }}">@lang('Cancel my subscription.')</a></p>
             </div>
             <div class="account-subscription-footer">
                 <a class="account-subscription-edit-button" href="{{ route($lang.'::subscriptions-upgrade') }}">@lang('Switch your subscription to another plan.')</a>
