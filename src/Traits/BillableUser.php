@@ -34,7 +34,7 @@ trait BillableUser
     {
         return [
             'email' => $this->email,
-            'name' => "$this->first_name $this->last_name",
+            'name' => "{$this->first_name} {$this->last_name}",
             'locale' => $this->getLocale(),
             'metadata' => [
                 'id' => $this->id,
@@ -56,7 +56,7 @@ trait BillableUser
      */
     public function getLocale()
     {
-        switch (app()->getLocale()) {
+        switch ($this->locale) {
             case 'fr':
                 $locale = 'fr_FR';
 
