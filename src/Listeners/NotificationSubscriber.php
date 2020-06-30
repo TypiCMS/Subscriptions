@@ -3,6 +3,7 @@
 namespace TypiCMS\Modules\Subscriptions\Listeners;
 
 use Illuminate\Support\Facades\Notification;
+use TypiCMS\Modules\Subscriptions\Notifications\NewFailedOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\NewFirstPaidOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\NewPaidOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\YourCancelledSubscription;
