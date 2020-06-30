@@ -17,7 +17,7 @@ class NotificationSubscriber
         $user->notify(new YourPaidOrder($order, $user));
 
         // Notify the webmaster
-        Notification::route('mail', config('typicms.developer_email'))
+        Notification::route('mail', config('typicms.webmaster_email'))
             ->notify(new NewPaidOrder($order, $user));
     }
 
