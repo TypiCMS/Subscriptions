@@ -7,7 +7,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 
-class YourPaidOrder extends Notification
+class YourRenewedSubscription extends Notification
 {
     use Queueable;
 
@@ -48,9 +48,8 @@ class YourPaidOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('Thank you for your subscription.'))
-            ->greeting(__('Hello!'))
-            ->line(__('You are subscribed!'));
+            ->subject('['.TypiCMS::title().'] '.__('Thank you'))
+            ->markdown('subscriptions::mail.your-renewed-subscription', ['user' => $this->user]);
     }
 
     /**

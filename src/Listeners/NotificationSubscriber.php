@@ -3,18 +3,32 @@
 namespace TypiCMS\Modules\Subscriptions\Listeners;
 
 use Illuminate\Support\Facades\Notification;
+use TypiCMS\Modules\Subscriptions\Notifications\NewFirstPaidOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\NewPaidOrder;
-use TypiCMS\Modules\Subscriptions\Notifications\YourPaidOrder;
-use TypiCMS\Modules\Subscriptions\Notifications\YourSubscriptionIsCancelled;
+use TypiCMS\Modules\Subscriptions\Notifications\YourCancelledSubscription;
+use TypiCMS\Modules\Subscriptions\Notifications\YourFailedOrder;
+use TypiCMS\Modules\Subscriptions\Notifications\YourNewSubscription;
+use TypiCMS\Modules\Subscriptions\Notifications\YourRenewedSubscription;
 use TypiCMS\Modules\Users\Models\User;
 
 class NotificationSubscriber
 {
+    public function onFirstPaymentPaid($event)
+    {
+        $order = $event->order;
+        $user = User::find($order->owner_id);
+        $user->notify(new YourNewSubscription($order, $user));
+
+        // Notify the webmaster
+        Notification::route('mail', config('typicms.webmaster_email'))
+            ->notify(new NewFirstPaidOrder($order, $user));
+    }
+
     public function onPaymentPaid($event)
     {
         $order = $event->order;
         $user = User::find($order->owner_id);
-        $user->notify(new YourPaidOrder($order, $user));
+        $user->notify(new YourRenewedSubscription($order, $user));
 
         // Notify the webmaster
         Notification::route('mail', config('typicms.webmaster_email'))
@@ -26,23 +40,30 @@ class NotificationSubscriber
         $order = $event->order;
         $user = User::find($order->owner_id);
         $user->notify(new YourFailedOrder($order, $user));
+
+        // Notify the webmaster
+        Notification::route('mail', config('typicms.webmaster_email'))
+            ->notify(new NewFailedOrder($order, $user));
     }
 
     public function onSubscriptionCancelled($event)
     {
         $subscription = $event->subscription;
         $user = User::find($subscription->owner_id);
-        $user->notify(new YourSubscriptionIsCancelled($subscription, $user));
+        $user->notify(new YourCancelledSubscription($subscription, $user));
     }
 
     public function subscribe($events)
     {
+        // First payment paid
+        $events->listen(
+            'Laravel\Cashier\Events\FirstPaymentPaid',
+            'TypiCMS\Modules\Subscriptions\Listeners\NotificationSubscriber@onFirstPaymentPaid'
+        );
+
         // Payment paid
         $events->listen(
-            [
-                'Laravel\Cashier\Events\FirstPaymentPaid',
-                'Laravel\Cashier\Events\OrderPaymentPaid',
-            ],
+            'Laravel\Cashier\Events\OrderPaymentPaid',
             'TypiCMS\Modules\Subscriptions\Listeners\NotificationSubscriber@onPaymentPaid'
         );
 

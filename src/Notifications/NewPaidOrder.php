@@ -47,13 +47,9 @@ class NewPaidOrder extends Notification
      */
     public function toMail($notifiable)
     {
-        $actionUrl = route('admin::show-user', $this->user);
-
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('B Plus has a new paid member.'))
-            ->greeting(__('Hello!'))
-            ->line(__('B Plus has a new paid member.'))
-            ->action('View online', $actionUrl);
+            ->subject('['.TypiCMS::title().'] '.__('A subscription was renewed automatically.'))
+            ->markdown('subscriptions::mail.new-paid-order', ['user' => $this->user]);
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 
-class YourFailedOrder extends Notification
+class NewFirstPaidOrder extends Notification
 {
     use Queueable;
 
@@ -35,7 +35,7 @@ class YourFailedOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -48,7 +48,7 @@ class YourFailedOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('There was an error with your payment.'))
+            ->subject('['.TypiCMS::title().'] '.__('You have a new paid member.'))
             ->markdown('subscriptions::mail.your-failed-order', ['user' => $this->user]);
     }
 
@@ -61,6 +61,7 @@ class YourFailedOrder extends Notification
      */
     public function toArray($notifiable)
     {
-        return array_filter($notifiable->toArray());
+        return [
+        ];
     }
 }

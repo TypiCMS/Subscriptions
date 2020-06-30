@@ -7,22 +7,22 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 
-class YourFailedOrder extends Notification
+class YourCancelledSubscription extends Notification
 {
     use Queueable;
 
-    private $order;
+    private $subscription;
     private $user;
 
     /**
      * Create a new notification instance.
      *
-     * @param mixed $order
+     * @param mixed $subscription
      * @param mixed $user
      */
-    public function __construct($order, $user)
+    public function __construct($subscription, $user)
     {
-        $this->order = $order;
+        $this->subscription = $subscription;
         $this->user = $user;
     }
 
@@ -35,7 +35,7 @@ class YourFailedOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -48,8 +48,8 @@ class YourFailedOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('There was an error with your payment.'))
-            ->markdown('subscriptions::mail.your-failed-order', ['user' => $this->user]);
+            ->subject('['.TypiCMS::title().'] '.__('Goodbye'))
+            ->markdown('subscriptions::mail.your-cancelled-subscription', ['user' => $this->user]);
     }
 
     /**
@@ -61,6 +61,7 @@ class YourFailedOrder extends Notification
      */
     public function toArray($notifiable)
     {
-        return array_filter($notifiable->toArray());
+        return [
+        ];
     }
 }
