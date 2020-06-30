@@ -23,6 +23,7 @@ class Install extends Command
     {
         $this->call('cashier:install', ['--template' => true]);
         $this->call('translations:add', ['path' => 'vendor/typicms/subscriptions/src/resources/lang']);
+        $this->call('notifications:table');
         $this->call('migrate');
     }
 }
