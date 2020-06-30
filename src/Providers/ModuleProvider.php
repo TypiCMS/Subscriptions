@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Subscriptions\Composers\SidebarViewComposer;
 use TypiCMS\Modules\Subscriptions\Console\Commands\Install;
+use TypiCMS\Modules\Subscriptions\Console\Commands\SubscriptionsRenewalNotification;
 use TypiCMS\Modules\Subscriptions\Facades\SubscriberFacade;
 use TypiCMS\Modules\Subscriptions\Listeners\NotificationSubscriber;
 use TypiCMS\Modules\Subscriptions\Subscriber;
@@ -65,6 +66,9 @@ class ModuleProvider extends ServiceProvider
             $schedule->command('cashier:run')
                 ->everyFiveMinutes()
                 ->withoutOverlapping();
+
+            $schedule->command('subscriptions:renewal-notification')
+                ->dailyAt('10:00');
         });
     }
 
@@ -74,6 +78,7 @@ class ModuleProvider extends ServiceProvider
 
         $this->commands([
             Install::class,
+            SubscriptionsRenewalNotification::class,
         ]);
 
         /*

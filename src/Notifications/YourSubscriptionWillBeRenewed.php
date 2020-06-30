@@ -12,7 +12,6 @@ class YourSubscriptionWillBeRenewed extends Notification
     use Queueable;
 
     private $subscription;
-    private $user;
 
     /**
      * Create a new notification instance.
@@ -20,10 +19,9 @@ class YourSubscriptionWillBeRenewed extends Notification
      * @param mixed $subscription
      * @param mixed $user
      */
-    public function __construct($subscription, $user)
+    public function __construct($subscription)
     {
         $this->subscription = $subscription;
-        $this->user = $user;
     }
 
     /**
@@ -50,7 +48,7 @@ class YourSubscriptionWillBeRenewed extends Notification
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('Your subscription will be automatically renewed in a few days.'))
             ->greeting(__('Hello!'))
-            ->line(__('Your subscription will be automatically renewed in a few days.'));
+            ->line(__('Nous vous informons que votre affiliation en tant que :plan sera renouvellée automatiquement en date du :date', ['plan' => __($this->subscription->plan), 'date' => $this->subscription->cycle_ends_at->format('d.m.Y')]));
     }
 
     /**
