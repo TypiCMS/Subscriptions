@@ -46,9 +46,9 @@ class YourSubscriptionWillBeRenewed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('Your subscription will be automatically renewed in a few days.'))
+            ->subject('['.TypiCMS::title().'] '.__('Your subscription'))
             ->greeting(__('Hello!'))
-            ->line(__('Nous vous informons que votre affiliation en tant que :plan sera renouvellée automatiquement en date du :date', ['plan' => __($this->subscription->plan), 'date' => $this->subscription->cycle_ends_at->format('d.m.Y')]));
+            ->line(__('We inform you that your membership as a :plan will be renewed automatically as of :date.', ['plan' => __($this->subscription->plan), 'date' => $this->subscription->cycle_ends_at->format('d.m.Y')]));
     }
 
     /**
