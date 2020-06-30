@@ -1,4 +1,6 @@
 {
+    "Renewal date": "Fecha de renovación",
+    "We inform you that your membership as a :plan will be renewed automatically as of :date": "Le informamos que su membresía como :plan se renovará automáticamente a partir de :date",
     "# subscriptions": "No hay suscripciones | 1 suscripción | {count} suscripciones",
     "/ 1 month": "/ mes",
     "/ 1 year": "/ año",
