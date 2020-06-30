@@ -27,14 +27,9 @@
     @else
         @if ($plans->count() > 0)
         <div class="account-subscription-body">
-            <p>@lang('Please choose a plan and click on “I subscribe”.')</p>
+            <p class="text-muted">@lang('You are not currently subscribed to any plan.')</p>
+            <p><a class="btn btn-sm btn-primary" href="{{ route($lang.'::subscriptions-plans') }}">@lang('I subscribe')</a></p>
         </div>
-        {!! BootForm::open()->action(route($lang.'::subscriptions-subscribe')) !!}
-        @include('subscriptions::public._plans-radio-buttons')
-        <div class="account-subscription-footer">
-            {!! BootForm::submit(__('I subscribe'))->addClass('account-subscription-footer-button') !!}
-        </div>
-        {!! BootForm::close() !!}
         @endif
     @endif
 </div>
