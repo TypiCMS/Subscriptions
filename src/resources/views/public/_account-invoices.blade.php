@@ -6,8 +6,8 @@
     <table class="account-invoices-table">
         <thead>
         <tr>
-            <th scope="col">@lang('Number')</th>
             <th scope="col">@lang('Date')</th>
+            <th scope="col">@lang('Number')</th>
             <th scope="col">@lang('Amount')</th>
             <th scope="col"></th>
         </tr>
@@ -15,10 +15,10 @@
         <tbody>
         @foreach ($invoices as $invoice)
             <tr>
-                <th scope="row">
+                <td scope="row">{{ $invoice->date()->format('d.m.Y') }}</td>
+                <th>
                     <small class="text-muted fw-normal">{{ $invoice->id() }}</small>
                 </th>
-                <td><small>{{ $invoice->date()->format('d.m.Y') }}</small></td>
                 <td>{{ $invoice->total() }}</td>
                 <td class="text-right">
                     <a href="{{ route($lang.'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-secondary">@lang('View')</a>
