@@ -1,6 +1,6 @@
 <div class="account-profile">
     <div class="account-profile-header">
-        <h2 class="account-profile-title">@lang('Your profile')</h2>
+        <h2 class="account-profile-title">@lang('Your contact details')</h2>
     </div>
     <ul class="account-profile-list">
         <li class="account-profile-item">
