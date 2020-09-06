@@ -1,9 +1,6 @@
 .account {
     @extend .container-fluid;
     padding-bottom: 5rem;
-    &-content {
-        background-color: $gray-100;
-    }
     &-header {
         background-image: linear-gradient(180deg, $white 40%, $gray-100 100%);
         padding: 6rem 0 1rem;
