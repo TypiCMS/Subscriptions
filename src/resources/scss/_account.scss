@@ -1,6 +1,9 @@
 .account {
     @extend .container-fluid;
     padding-bottom: 5rem;
+    &-content {
+        background-color: $gray-100;
+    }
     &-header {
         background-image: linear-gradient(180deg, $white 40%, $gray-100 100%);
         padding: 6rem 0 1rem;
@@ -12,76 +15,67 @@
             @extend .container-fluid;
         }
     }
-    &-row {
-        @include make-row;
-    }
-    &-column {
-        @include make-col-ready();
-        margin-bottom: $grid-gutter-width;
-        @include media-breakpoint-up(lg) {
-            @include make-col(6);
-        }
-    }
     &-profile,
     &-subscription,
+    &-sponsor,
     &-plans,
     &-payment-methods,
     &-invoices {
         @extend .card;
-        border-color: darken($teal, 5%);
+        @extend .shadow;
+        border: none;
         font-size: 1.125rem;
         min-width: 40%;
+        border-radius: 2 * $border-radius-lg;
+        margin-bottom: 2rem;
         &-header {
             @extend .card-header;
-            background-color: $teal;
+            background-color: $orange;
+            border: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top-left-radius: 2 * $border-radius-lg !important;
+            border-top-right-radius: 2 * $border-radius-lg !important;
         }
         &-title {
             color: $white;
             font-size: 1rem;
             text-transform: uppercase;
-            font-weight: normal;
+            font-weight: bold;
             margin: 0;
-        }
-        &-edit-button {
-            @extend .btn;
-            padding: 0;
-            color: $teal;
-            font-size: 0.875rem;
-            text-transform: uppercase;
         }
         &-body {
             @extend .card-body;
-            background-color: $white;
             flex-grow: 1;
             p:last-child {
                 margin-bottom: 0;
             }
-        }
-        &-list {
-            @extend .list-group;
-            @extend .list-group-flush;
+            &-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
         &-table {
             background-color: $white;
+            th {
+                border-top: none;
+            }
+        }
+        &-list {
+            @extend .list-unstyled;
+            margin-bottom: 0;
         }
         &-item {
-            @extend .list-group-item;
-            border: 0;
-            display: flex;
-            &:nth-child(2n + 1) {
-                background-color: $gray-100;
-            }
             &-label {
-                width: 50%;
                 text-transform: uppercase;
-                color: $gray-600;
+                color: $gray-500;
                 font-size: 0.875rem;
+                font-weight: bold;
+                line-height: 0.875;
             }
             &-value {
-                width: 50%;
                 margin-bottom: 0;
                 font-size: 1rem;
             }
@@ -92,15 +86,25 @@
         }
         &-footer {
             @extend .card-footer;
-            background-color: lighten($teal, 40%);
-            border-color: lighten($teal, 20%);
+            background-color: lighten($orange, 25%);
+            border: none;
             display: flex;
             justify-content: flex-end;
+            border-bottom-left-radius: 2 * $border-radius-lg !important;
+            border-bottom-right-radius: 2 * $border-radius-lg !important;
             &-button {
                 @extend .btn;
                 @extend .btn-sm;
-                @include button-variant($teal, $teal);
-                text-transform: none;
+                @extend .btn-link;
+                color: darken($orange, 15%);
+                padding: 0;
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    color: darken($orange, 30%);
+                }
             }
         }
     }

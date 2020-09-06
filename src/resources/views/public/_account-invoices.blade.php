@@ -21,8 +21,8 @@
                 </th>
                 <td>{{ $invoice->total() }}</td>
                 <td class="text-right">
-                    <a href="{{ route($lang.'::subscriptions-invoice', $invoice->id()) }}" target="_blank" class="btn btn-sm btn-outline-secondary">@lang('View')</a>
-                    <a href="{{ route($lang.'::subscriptions-download-invoice', $invoice->id()) }}" class="btn btn-sm btn-outline-primary">@lang('Download')</a>
+                    <a class="btn btn-sm btn-light" href="{{ route($lang.'::subscriptions-invoice', $invoice->id()) }}" target="_blank">@lang('View')</a>
+                    <a class="btn btn-sm btn-secondary" href="{{ route($lang.'::subscriptions-download-invoice', $invoice->id()) }}"><span class="fa fa-fw fa-download"></span> @lang('Download')</a>
                 </td>
             </tr>
         @endforeach

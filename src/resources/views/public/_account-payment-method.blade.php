@@ -26,9 +26,9 @@
                 <span class="account-payment-methods-item-value">{{ $mandate->status }}</span>
             </li>
         </ul>
-        <div class="account-payment-methods-footer">
+        <div class="account-payment-methods-body">
             @if(! request()->user()->hasRunningSubscription())
-            <a class="account-payment-methods-edit-button" href="{{ route(app()->getLocale().'::subscriptions-paymentmethod-revoke', $mandate->id) }}">@lang('Remove')</a>
+            <a class="account-payment-methods-button btn btn-sm btn-secondary" href="{{ route(app()->getLocale().'::subscriptions-paymentmethod-revoke', $mandate->id) }}">@lang('Remove')</a>
             @endif
         </div>
         @endforeach

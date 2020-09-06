@@ -22,18 +22,13 @@
 
         @include('subscriptions::public._alerts')
 
-        <div class="account-row">
-            <div class="account-column">
-                @include('subscriptions::public._account-profile')
-            </div>
-            <div class="account-column">
+        <div class="row">
+            <div class="col-md-8">
                 @include('subscriptions::public._account-subscription')
-            </div>
-            <div class="account-column">
-                @include('subscriptions::public._account-payment-method')
-            </div>
-            <div class="account-column">
                 @include('subscriptions::public._account-invoices')
+            </div>
+            <div class="col-md-4">
+                @include('subscriptions::public._account-profile')
             </div>
         </div>
 

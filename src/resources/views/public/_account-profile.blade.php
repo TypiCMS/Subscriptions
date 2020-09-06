@@ -2,25 +2,23 @@
     <div class="account-profile-header">
         <h2 class="account-profile-title">@lang('Your contact details')</h2>
     </div>
-    <ul class="account-profile-list">
-        <li class="account-profile-item">
-            <span class="account-profile-item-label">@lang('Name')</span>
+    <div class="account-profile-body">
+        <p class="account-profile-item">
+            <span class="account-profile-item-label">@lang('Name')</span><br>
             <span class="account-profile-item-value">{{ $user->first_name }} {{ $user->last_name }}</span>
-        </li>
-        <li class="account-profile-item">
-            <span class="account-profile-item-label">@lang('Email')</span>
+        </p>
+        <p class="account-profile-item">
+            <span class="account-profile-item-label">@lang('Email')</span><br>
             <span class="account-profile-item-value">{{ $user->email }}</span>
-        </li>
-        <li class="account-profile-item">
-            <span class="account-profile-item-label">@lang('Address')</span>
-            <address class="account-profile-item-value">
+        </p>
+        <p class="account-profile-item">
+            <span class="account-profile-item-label">@lang('Address')</span><br>
+            <span class="account-profile-item-value">
                 {{ $user->street }} {{ $user->number }} {{ $user->box }}<br/>
                 {{ $user->zip }} {{ $user->city }}<br/>
                 {{ $user->country }}
-            </address>
-        </li>
-    </ul>
-    <div class="account-profile-footer">
-        <a class="account-profile-edit-button" href="{{ route(app()->getLocale().'::subscriptions-profile-edit') }}">@lang('Edit')</a>
+            </span>
+        </p>
+        <a class="account-profile-button btn btn-sm btn-secondary" href="{{ route(app()->getLocale().'::subscriptions-profile-edit') }}"><span class="fa fa-fw fa-pencil"></span> @lang('Edit')</a>
     </div>
 </div>
