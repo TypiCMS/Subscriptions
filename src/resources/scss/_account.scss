@@ -17,6 +17,7 @@
     &-sponsor,
     &-plans,
     &-payment-methods,
+    &-verification,
     &-invoices {
         @extend .card;
         @extend .shadow;

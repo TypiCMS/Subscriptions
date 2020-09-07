@@ -22,6 +22,24 @@
 
         @include('subscriptions::public._alerts')
 
+        @if (!auth()->user()->hasVerifiedEmail())
+            @if (session('resent'))
+                <div class="alert alert-success" role="alert">
+                    {{ __('A fresh verification link has been sent to your email address.') }}
+                </div>
+            @else
+                <div class="account-verification">
+                    <div class="account-verification-header bg-danger">
+                        <h2 class="account-verification-title">@lang('Verify Your Email Address')</h2>
+                    </div>
+                    <div class="account-verification-body">
+                        {{ __('Before proceeding, please check your email for a verification link.') }}
+                        {{ __('If you did not receive the email') }}, <a href="{{ route(app()->getLocale().'::verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    </div>
+                </div>
+            @endif
+        @endif
+
         <div class="row">
             <div class="col-md-8">
                 @include('subscriptions::public._account-subscription')
