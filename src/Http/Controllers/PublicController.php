@@ -188,24 +188,20 @@ class PublicController extends BasePublicController
             ->with('success', __('Your subscription was sucessfully upgraded.'));
     }
 
-    public function invoice(Request $request, $id)
+    public function invoice(Request $request, $number)
     {
-        $order = Order::where('number', $id)->firstOrFail();
-
-        if ($order->owner_id !== $request->user()->id) {
-            abort(403);
-        }
+        $order = Order::where('number', $number)
+            ->where('owner_id', $request->user()->id)
+            ->firstOrFail();
 
         return $order->invoice()->view();
     }
 
-    public function downloadInvoice(Request $request, $id)
+    public function downloadInvoice(Request $request, $number)
     {
-        $order = Order::where('number', $id)->firstOrFail();
-
-        if ($order->owner_id !== $request->user()->id) {
-            abort(403);
-        }
+        $order = Order::where('number', $number)
+            ->where('owner_id', $request->user()->id)
+            ->firstOrFail();
 
         $pdfOptions = new Options();
         $pdfOptions->set('defaultPaperSize', 'A4');
