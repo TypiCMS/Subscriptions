@@ -14,7 +14,7 @@ use TypiCMS\Modules\Subscriptions\Facades\SubscriberFacade;
 use TypiCMS\Modules\Subscriptions\Listeners\NotificationSubscriber;
 use TypiCMS\Modules\Subscriptions\Subscriber;
 
-class ModuleProvider extends ServiceProvider
+class ModuleServiceProvider extends ServiceProvider
 {
     public function boot()
     {

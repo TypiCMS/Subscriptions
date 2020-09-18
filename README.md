@@ -30,7 +30,7 @@ composer require typicms/subscriptions
  * they should be set before Core Service provider.
  */
 …
-TypiCMS\Modules\Subscriptions\Providers\ModuleProvider::class,
+TypiCMS\Modules\Subscriptions\Providers\ModuleServiceProvider::class,
 …
 ```
 

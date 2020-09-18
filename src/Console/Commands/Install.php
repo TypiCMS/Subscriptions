@@ -25,7 +25,7 @@ class Install extends Command
         $this->call('translations:add', ['path' => 'vendor/typicms/subscriptions/src/resources/lang']);
         $this->call('notifications:table');
         $this->call('vendor:publish', [
-            '--provider' => 'TypiCMS\Modules\Subscriptions\Providers\ModuleProvider',
+            '--provider' => 'TypiCMS\Modules\Subscriptions\Providers\ModuleServiceProvider',
             '--tag' => 'migrations',
         ]);
         $this->call('migrate');
