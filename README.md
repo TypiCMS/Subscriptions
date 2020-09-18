@@ -44,14 +44,19 @@ MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
 
 ### Publish the Users module.
+
 If not already done.
+
 ```php
 php artisan typicms:publish Users
 ```
- [More information can be found here](https://github.com/TypiCMS/Base#publish-a-module)
+
+[More information can be found here](https://github.com/TypiCMS/Base#publish-a-module)
 
 ### Mass-assignement
+
 If needed, allow the following fields to be fillable.
+
 ```php
 protected $fillable = [
      'street',
@@ -87,12 +92,13 @@ Manage any coupons in `config/cashier_coupons.php`. By default an example coupon
 
 Create a page linked to the Subscriptions module and navigate to it.
 
-### Pre-build Plans Template 
+### Pre-build Plans Template
+
 Quickly build an effective pricing table for your potential customers with the template created under `/plans` and linked to the `PublicController@plans` controller.
 
 ### Customize Invoices
 
-Copy the Cashier package views using the following command: 
+Copy the Cashier package views using the following command:
 
 ```php
 php artisan vendor:publish --provider="Laravel\Cashier\CashierServiceProvider" --tag="cashier-views"
@@ -101,10 +107,10 @@ php artisan vendor:publish --provider="Laravel\Cashier\CashierServiceProvider" -
 You can customize the `/resources/views/vendor/cashier/` files as you like.
 
 ### Tax Management
+
 To specify the tax percentage a user pays on a subscription, edit the `tax_percentage` column for the user in the database.
 
 The displayed price on the subscription has built-in tax calculation.
-
 
 ## Additional information
 
