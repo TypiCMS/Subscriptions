@@ -16,7 +16,7 @@ class Subscriber
             $tax = auth()->user()->taxPercentage();
         }
 
-        $amount = ((floatval($price) / 100) * $tax) + $price;
+        $amount = (((float) $price / 100) * $tax) + $price;
         $intAmount = $this->amountToInt($amount);
 
         return $this->formatAmount($intAmount, $currency, $locale);
