@@ -11,7 +11,7 @@ class SidebarViewComposer
 {
     public function compose(View $view)
     {
-        if (Gate::denies('see-all-subscriptions')) {
+        if (Gate::denies('read subscriptions')) {
             return;
         }
         $view->sidebar->group(__('Users and roles'), function (SidebarGroup $group) {
