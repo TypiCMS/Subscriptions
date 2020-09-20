@@ -2,7 +2,7 @@
 
 return [
     'subscriptions' => [
-        'see-all-subscriptions' => 'View list',
-        'update-subscription' => 'Edit',
+        'read subscriptions' => 'Read',
+        'update subscriptions' => 'Update',
     ],
 ];
