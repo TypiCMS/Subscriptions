@@ -59,12 +59,6 @@ If needed, allow the following fields to be fillable.
 
 ```php
 protected $fillable = [
-     'street',
-     'number',
-     'zip',
-     'city',
-     'country',
-     'box',
      'tax_percentage',
      'mollie_customer_id',
      'mollie_mandate_id',
