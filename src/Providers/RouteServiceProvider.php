@@ -12,9 +12,6 @@ use TypiCMS\Modules\Subscriptions\Http\Controllers\PublicController;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * Define the routes for the application.
-     */
     public function map()
     {
         foreach (locales() as $lang) {
