@@ -51,6 +51,7 @@ class RouteServiceProvider extends ServiceProvider
          */
         Route::middleware('admin')->prefix('admin')->name('admin::')->group(function (Router $router) {
             $router->get('subscriptions', [AdminController::class, 'index'])->name('index-subscriptions')->middleware('can:read subscriptions');
+            $router->get('subscriptions/export', [AdminController::class, 'export'])->name('admin::export-subscriptions')->middleware('can:read subscriptions');
             $router->get('subscriptions/{subscription}', [AdminController::class, 'show'])->name('show-subscription')->middleware('can:update-subscription');
             $router->post('subscriptions/{subscription}/cancel', [AdminController::class, 'cancel'])->name('cancel-subscription')->middleware('can:update-subscription');
             $router->post('subscriptions/{subscription}/resume', [AdminController::class, 'resume'])->name('resume-subscription')->middleware('can:update-subscription');
