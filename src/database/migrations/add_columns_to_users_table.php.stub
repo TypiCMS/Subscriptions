@@ -16,11 +16,6 @@ class AddColumnsToUsersTable extends Migration
             $table->decimal('tax_percentage', 6, 4)->default(0); // optional
             $table->dateTime('trial_ends_at')->nullable(); // optional
             $table->text('extra_billing_information')->nullable(); // optional
-            $table->string('street')->nullable();
-            $table->string('number')->nullable();
-            $table->string('zip')->nullable();
-            $table->string('city')->nullable();
-            $table->string('country')->nullable();
         });
     }
 
@@ -35,11 +30,6 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('tax_percentage');
             $table->dropColumn('trial_ends_at');
             $table->dropColumn('extra_billing_information');
-            $table->dropColumn('street');
-            $table->dropColumn('number');
-            $table->dropColumn('zip');
-            $table->dropColumn('city');
-            $table->dropColumn('country');
         });
     }
 }
