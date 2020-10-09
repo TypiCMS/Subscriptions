@@ -14,7 +14,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use TypiCMS\Modules\Core\Filters\FilterOr;
 use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
-class SubscriptionsExport implements WithColumnFormatting, ShouldAutoSize, FromCollection, WithHeadings, WithMapping
+class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, WithHeadings, WithMapping
 {
     protected $collection;
 
@@ -47,16 +47,16 @@ class SubscriptionsExport implements WithColumnFormatting, ShouldAutoSize, FromC
     public function headings(): array
     {
         return [
-            'created_at',
-            'updated_at',
-            'name',
-            'plan',
-            'tax_percentage',
-            'ends_at',
-            'trial_ends_at',
-            'cycle_started_at',
-            'cycle_ends_at',
-            'scheduled_order_item_id',
+            'Created at',
+            'Updated at',
+            'Name',
+            'Plan',
+            'Tax percentage',
+            'Ends at',
+            'Trial ends at',
+            'Cycle started at',
+            'Cycle ends at',
+            'Scheduled order item id',
         ];
     }
 

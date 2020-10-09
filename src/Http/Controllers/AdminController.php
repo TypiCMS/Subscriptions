@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Subscriptions\Exports\SubscriptionsExport;
+use TypiCMS\Modules\Subscriptions\Exports\Export;
 use TypiCMS\Modules\Subscriptions\Http\Requests\FormRequest;
 use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
@@ -23,7 +23,7 @@ class AdminController extends BaseAdminController
     {
         $filename = date('Y-m-d').' '.config('app.name').' subscriptions.xlsx';
 
-        return Excel::download(new SubscriptionsExport($request), $filename);
+        return Excel::download(new Export($request), $filename);
     }
 
     public function show(Subscription $subscription): View
