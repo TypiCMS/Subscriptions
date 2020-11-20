@@ -21,6 +21,7 @@ class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, Wi
     public function __construct($request)
     {
         $this->collection = QueryBuilder::for(Subscription::class)
+            ->selectFields($request->input('fields.subscriptions'))
             ->allowedSorts(['plan', 'created_at'])
             ->allowedFilters([
                 AllowedFilter::custom('plan', new FilterOr()),
