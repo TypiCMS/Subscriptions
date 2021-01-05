@@ -56,8 +56,8 @@
         &-button {
             @extend .btn;
             @extend .btn-lg;
-            @extend .btn-block;
             @extend .btn-primary;
+            display: block;
         }
     }
 }

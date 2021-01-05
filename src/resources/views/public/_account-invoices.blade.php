@@ -20,7 +20,7 @@
                     <small class="text-muted fw-normal">{{ $invoice->id() }}</small>
                 </td>
                 <td>{{ $invoice->total() }}</td>
-                <td class="text-right">
+                <td class="text-end">
                     <a class="btn btn-sm btn-light" href="{{ route($lang.'::subscriptions-invoice', $invoice->id()) }}" target="_blank">@lang('View')</a>
                     <a class="btn btn-sm btn-secondary" href="{{ route($lang.'::subscriptions-download-invoice', $invoice->id()) }}">
                         <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -22,7 +22,7 @@
         {!! BootForm::bind(auth()->user()) !!}
         <div class="card bg-light">
             <div class="card-body">
-                <div class="form-row">
+                <div class="row gx-3">
                     <div class="col">
                         {!! BootForm::text(__('First name'), 'first_name')->required() !!}
                     </div>
@@ -30,7 +30,7 @@
                         {!! BootForm::text(__('Last name'), 'last_name')->required() !!}
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="row gx-3">
                     <div class="col">
                         {!! BootForm::text(__('Street'), 'street')->required() !!}
                     </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 {!! BootForm::text(__('City'), 'city')->required() !!}
-                <div class="form-row">
+                <div class="row gx-3">
                     <div class="col">
                         {!! BootForm::text(__('Zip'), 'zip')->required() !!}
                     </div>
