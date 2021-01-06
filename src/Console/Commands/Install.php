@@ -26,7 +26,6 @@ class Install extends Command
         $this->call('notifications:table');
         $this->call('vendor:publish', [
             '--provider' => 'TypiCMS\Modules\Subscriptions\Providers\ModuleServiceProvider',
-            '--tag' => 'migrations',
         ]);
         $this->call('migrate');
     }
