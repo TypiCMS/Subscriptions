@@ -23,30 +23,32 @@
         <div class="card bg-light">
             <div class="card-body">
                 <div class="row gx-3">
-                    <div class="col">
+                    <div class="col-sm-6">
                         {!! BootForm::text(__('First name'), 'first_name')->required() !!}
                     </div>
-                    <div class="col">
+                    <div class="col-sm-6">
                         {!! BootForm::text(__('Last name'), 'last_name')->required() !!}
                     </div>
                 </div>
                 <div class="row gx-3">
-                    <div class="col">
+                    <div class="col-md-8">
                         {!! BootForm::text(__('Street'), 'street')->required() !!}
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-sm-6 col-md-2">
                         {!! BootForm::text(__('Number'), 'number')->required() !!}
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-sm-6 col-md-2">
                         {!! BootForm::text(__('Box'), 'box') !!}
                     </div>
                 </div>
-                {!! BootForm::text(__('City'), 'city')->required() !!}
                 <div class="row gx-3">
-                    <div class="col">
+                    <div class="col-sm-6 col-md-4">
                         {!! BootForm::text(__('Postal code'), 'postal_code')->required() !!}
                     </div>
-                    <div class="col">
+                    <div class="col-sm-6 col-md-4">
+                        {!! BootForm::text(__('City'), 'city')->required() !!}
+                    </div>
+                    <div class="col-md-4">
                         {!! BootForm::text(__('Country'), 'country')->required() !!}
                     </div>
                 </div>
