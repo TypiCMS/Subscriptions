@@ -43,12 +43,24 @@ CASHIER_MODEL=TypiCMS\Modules\Users\Models\User
 MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
 
-### Publish the Users module.
-
-If not already done.
+### Publish the Users module and add the BillableUser trait to the User model.
 
 ```php
 php artisan typicms:publish Users
+```
+
+Modify the User model like this:
+
+```php
+…
+use TypiCMS\Modules\Subscriptions\Traits\BillableUser;
+…
+class User extends Model implements …
+{
+    …
+    use BillableUser;
+    …
+}
 ```
 
 [More information can be found here](https://github.com/TypiCMS/Base#publish-a-module)
@@ -75,6 +87,17 @@ Install Cashier and migrate the database.
 ```bash
 php artisan subscriptions:install
 ```
+
+### Import the scss files
+
+Edit `resources/scss/public.scss` and add:
+
+```scss
+@import 'public/account';
+@import 'public/plan-list';
+```
+
+Run `npm run dev` to compile the public.css file.
 
 ### Configure Cashier
 
