@@ -38,7 +38,7 @@
                                 <button class="plan-list-item-button" type="submit">@lang('Switch to this plan')</button>
                                 {!! BootForm::close() !!}
                             @else
-                                {!! BootForm::open()->action(route($lang.'::subscriptions-subscribe')) !!}
+                                {!! BootForm::open()->action(route($lang.'::subscriptions-subscribe'))->addClass('d-grid') !!}
                                 {!! BootForm::hidden('plan')->value($name) !!}
                                 <button class="plan-list-item-button" type="submit">@lang('I subscribe')</button>
                                 {!! BootForm::close() !!}
