@@ -29,7 +29,7 @@ class SubscriptionsProfileUpdate extends FormRequest
             'street' => 'required|string|max:255',
             'number' => 'required|string|max:255',
             'box' => 'nullable|string|max:255',
-            'zip' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
         ];

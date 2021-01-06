@@ -44,7 +44,7 @@
                 {!! BootForm::text(__('City'), 'city')->required() !!}
                 <div class="row gx-3">
                     <div class="col">
-                        {!! BootForm::text(__('Zip'), 'zip')->required() !!}
+                        {!! BootForm::text(__('Postal code'), 'postal_code')->required() !!}
                     </div>
                     <div class="col">
                         {!! BootForm::text(__('Country'), 'country')->required() !!}
