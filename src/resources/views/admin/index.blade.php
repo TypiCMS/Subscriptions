@@ -33,8 +33,8 @@
         <td>@{{ model.owner.last_name}}</td>
         <td>@{{ model.plan }}</td>
         <td>
-            <span v-if="model.status === 'active'" class="badge badge-success">@{{ model.status}}</span>
-            <span v-else class="badge badge-light">@{{ model.status}}</span>
+            <span v-if="model.status === 'active'" class="badge bg-success">@{{ model.status}}</span>
+            <span v-else class="badge bg-light">@{{ model.status}}</span>
         </td>
     </template>
 
