@@ -10,7 +10,7 @@
     ],
     "require": {
         "laravel/framework": ">=6.0",
-        "laravel/cashier-mollie": "^1.0",
+        "laravel/cashier-mollie": "^1.16",
         "moneyphp/money": "^3.3"
     },
     "autoload": {

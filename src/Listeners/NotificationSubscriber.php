@@ -73,6 +73,7 @@ class NotificationSubscriber
             [
                 'Laravel\Cashier\Events\FirstPaymentFailed',
                 'Laravel\Cashier\Events\OrderPaymentFailed',
+                'Laravel\Cashier\Events\OrderPaymentFailedDueToInvalidMandate',
             ],
             'TypiCMS\Modules\Subscriptions\Listeners\NotificationSubscriber@onPaymentFailed'
         );
