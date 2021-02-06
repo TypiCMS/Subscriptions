@@ -6,7 +6,7 @@ use TypiCMS\Modules\Core\Presenters\Presenter;
 
 class ModulePresenter extends Presenter
 {
-    public function title()
+    public function title(): string
     {
         return $this->entity->owner->first_name.' '.$this->entity->owner->last_name;
     }
