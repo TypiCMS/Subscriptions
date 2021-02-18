@@ -21,7 +21,6 @@ class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, Wi
     public function __construct($request)
     {
         $this->collection = QueryBuilder::for(Subscription::class)
-            ->selectFields($request->input('fields.subscriptions'))
             ->allowedSorts(['plan', 'created_at'])
             ->allowedFilters([
                 AllowedFilter::custom('plan', new FilterOr()),
@@ -48,16 +47,16 @@ class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, Wi
     public function headings(): array
     {
         return [
-            'Created at',
-            'Updated at',
-            'Name',
-            'Plan',
-            'Tax percentage',
-            'Ends at',
-            'Trial ends at',
-            'Cycle started at',
-            'Cycle ends at',
-            'Scheduled order item id',
+            __('Created at'),
+            __('Updated at'),
+            __('Name'),
+            __('Plan'),
+            __('Tax percentage'),
+            __('Ends at'),
+            __('Trial ends at'),
+            __('Cycle started at'),
+            __('Cycle ends at'),
+            __('Scheduled order item id'),
         ];
     }
 
