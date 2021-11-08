@@ -16,11 +16,9 @@ use TypiCMS\Modules\Subscriptions\Models\Subscription;
 
 class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, WithHeadings, WithMapping
 {
-    protected $collection;
-
-    public function __construct($request)
+    public function collection()
     {
-        $this->collection = QueryBuilder::for(Subscription::class)
+        return QueryBuilder::for(Subscription::class)
             ->allowedSorts(['plan', 'created_at'])
             ->allowedFilters([
                 AllowedFilter::custom('plan', new FilterOr()),
@@ -70,10 +68,5 @@ class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, Wi
             'H' => NumberFormat::FORMAT_DATE_DATETIME,
             'I' => NumberFormat::FORMAT_DATE_DATETIME,
         ];
-    }
-
-    public function collection()
-    {
-        return $this->collection;
     }
 }
