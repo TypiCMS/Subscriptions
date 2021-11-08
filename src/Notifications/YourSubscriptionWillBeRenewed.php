@@ -17,7 +17,6 @@ class YourSubscriptionWillBeRenewed extends Notification
      * Create a new notification instance.
      *
      * @param mixed $subscription
-     * @param mixed $user
      */
     public function __construct($subscription)
     {
