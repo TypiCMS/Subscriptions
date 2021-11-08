@@ -26,19 +26,19 @@ class Export implements WithColumnFormatting, ShouldAutoSize, FromCollection, Wi
             ->get();
     }
 
-    public function map($user): array
+    public function map($model): array
     {
         return [
             Date::dateTimeToExcel($model->created_at),
             Date::dateTimeToExcel($model->updated_at),
-            $user->name,
-            $user->plan,
-            $user->tax_percentage,
-            Date::dateTimeToExcel($user->ends_at),
-            Date::dateTimeToExcel($user->trial_ends_at),
-            Date::dateTimeToExcel($user->cycle_started_at),
-            Date::dateTimeToExcel($user->cycle_ends_at),
-            $user->scheduled_order_item_id,
+            $model->name,
+            $model->plan,
+            $model->tax_percentage,
+            Date::dateTimeToExcel($model->ends_at),
+            Date::dateTimeToExcel($model->trial_ends_at),
+            Date::dateTimeToExcel($model->cycle_started_at),
+            Date::dateTimeToExcel($model->cycle_ends_at),
+            $model->scheduled_order_item_id,
         ];
     }
 

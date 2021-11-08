@@ -7,22 +7,23 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 use Money\Parser\DecimalMoneyParser;
+use NumberFormatter;
 
 class Subscriber
 {
-    public function planPriceFormat($price, $tax = 0, $currency = 'EUR', $locale = 'en_US')
+    public function planPriceFormat(string $price, float $tax = 0, string $currency = 'EUR', string $locale = 'en_US')
     {
         if ($tax == 0) {
             $tax = auth()->user()->taxPercentage();
         }
 
-        $amount = (((float) $price / 100) * $tax) + $price;
-        $intAmount = $this->amountToInt($amount);
+        $amount = (((float) $price / 100) * $tax) + (float) $price;
+        $intAmount = $this->amountToInt((string) $amount);
 
         return $this->formatAmount($intAmount, $currency, $locale);
     }
 
-    public function amountToInt(string $amount, $currency = 'EUR')
+    private function amountToInt(string $amount, string $currency = 'EUR')
     {
         // The DecimalMoneyParser uses a point as decimal delimiter.
         // We replace commas by dots then.
@@ -34,11 +35,11 @@ class Subscriber
         return $moneyParser->parse($amount, $currency)->getAmount();
     }
 
-    public function formatAmount(string $amount, $currency = 'EUR', $locale = 'en_US')
+    private function formatAmount(string $amount, string $currency = 'EUR', string $locale = 'en_US')
     {
         $money = new Money($amount, new Currency($currency));
         $currencies = new ISOCurrencies();
-        $numberFormatter = new \NumberFormatter($locale, \NumberFormatter::CURRENCY);
+        $numberFormatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 
         $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
 
