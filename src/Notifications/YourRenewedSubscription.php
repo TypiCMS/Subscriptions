@@ -49,7 +49,7 @@ class YourRenewedSubscription extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('Thank you'))
-            ->markdown('subscriptions::mail.your-renewed-subscription', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.your-renewed-subscription', ['user' => $this->user, 'order' => $this->order]);
     }
 
     /**

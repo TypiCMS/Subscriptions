@@ -49,7 +49,7 @@ class YourFailedOrder extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('There was an error with your payment.'))
-            ->markdown('subscriptions::mail.your-failed-order', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.your-failed-order', ['user' => $this->user, 'order' => $this->order]);
     }
 
     /**

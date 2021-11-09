@@ -49,7 +49,7 @@ class YourCancelledSubscription extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('Goodbye'))
-            ->markdown('subscriptions::mail.your-cancelled-subscription', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.your-cancelled-subscription', ['user' => $this->user, 'subscription' => $this->subscription]);
     }
 
     /**

@@ -49,7 +49,7 @@ class YourNewSubscription extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('Welcome'))
-            ->markdown('subscriptions::mail.your-new-subscription', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.your-new-subscription', ['user' => $this->user, 'order' => $this->order]);
     }
 
     /**

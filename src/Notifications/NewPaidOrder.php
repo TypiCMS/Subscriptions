@@ -49,7 +49,7 @@ class NewPaidOrder extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('A subscription was renewed automatically.'))
-            ->markdown('subscriptions::mail.new-paid-order', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.new-paid-order', ['user' => $this->user, 'order' => $this->order]);
     }
 
     /**

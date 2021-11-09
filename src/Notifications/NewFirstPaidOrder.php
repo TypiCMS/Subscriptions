@@ -49,7 +49,7 @@ class NewFirstPaidOrder extends Notification
     {
         return (new MailMessage())
             ->subject('['.TypiCMS::title().'] '.__('You have a new paid member.'))
-            ->markdown('subscriptions::mail.new-first-paid-order', ['user' => $this->user]);
+            ->markdown('subscriptions::mail.new-first-paid-order', ['user' => $this->user, 'order' => $this->order]);
     }
 
     /**
