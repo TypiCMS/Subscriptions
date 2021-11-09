@@ -12,7 +12,7 @@ use TypiCMS\Modules\Subscriptions\Http\Controllers\PublicController;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public function map()
+    public function map(): void
     {
         foreach (locales() as $lang) {
             Route::middleware('web')->get($lang.'/webhooks/cashier/check-payment/{payment_id}', [PublicController::class, 'checkPayment']);

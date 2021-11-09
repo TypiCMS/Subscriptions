@@ -5,6 +5,7 @@ namespace TypiCMS\Modules\Subscriptions\Providers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Subscriptions\Composers\SidebarViewComposer;
@@ -16,13 +17,12 @@ use TypiCMS\Modules\Subscriptions\Subscriber;
 
 class ModuleServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'typicms.subscriptions');
         $this->mergeConfigFrom(__DIR__.'/../config/permissions.php', 'typicms.permissions');
 
-        $modules = $this->app['config']['typicms']['modules'];
-        $this->app['config']->set('typicms.modules', array_merge(['subscriptions' => ['linkable_to_page']], $modules));
+        config(['typicms.modules.subscriptions' => ['linkable_to_page']]);
 
         $this->loadViewsFrom(__DIR__.'/../../resources/views/', 'subscriptions');
 
@@ -38,15 +38,12 @@ class ModuleServiceProvider extends ServiceProvider
             __DIR__.'/../../resources/scss' => resource_path('scss'),
         ], 'resources');
 
-        /*
-         * Sidebar view composer
-         */
-        $this->app->view->composer('core::admin._sidebar', SidebarViewComposer::class);
+        View::composer('core::admin._sidebar', SidebarViewComposer::class);
 
         /*
          * Add the page in the view.
          */
-        $this->app->view->composer('subscriptions::public.*', function ($view) {
+        View::composer('subscriptions::public.*', function ($view) {
             $view->page = TypiCMS::getPageLinkedToModule('subscriptions');
         });
 
@@ -75,18 +72,13 @@ class ModuleServiceProvider extends ServiceProvider
         });
     }
 
-    public function register()
+    public function register(): void
     {
-        $app = $this->app;
-
         $this->commands([
             Install::class,
             SubscriptionsRenewalNotification::class,
         ]);
 
-        /*
-         * Register route service provider
-         */
-        $app->register(RouteServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
     }
 }
