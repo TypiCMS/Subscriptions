@@ -5,7 +5,7 @@ namespace TypiCMS\Modules\Subscriptions\Models;
 use Illuminate\Support\Carbon;
 use Laracasts\Presenter\PresentableTrait;
 use TypiCMS\Modules\Core\Models\Base;
-use TypiCMS\Modules\History\Traits\Historable;
+use TypiCMS\Modules\Core\Traits\Historable;
 use TypiCMS\Modules\Subscriptions\Presenters\ModulePresenter;
 
 class Subscription extends Base

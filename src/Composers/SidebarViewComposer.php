@@ -18,8 +18,8 @@ class SidebarViewComposer
             $group->id = 'users';
             $group->addItem(__('Subscriptions'), function (SidebarItem $item) {
                 $item->id = 'subscriptions';
-                $item->icon = config('typicms.subscriptions.sidebar.icon');
-                $item->weight = config('typicms.subscriptions.sidebar.weight');
+                $item->icon = config('typicms.modules.subscriptions.sidebar.icon');
+                $item->weight = config('typicms.modules.subscriptions.sidebar.weight');
                 $item->route('admin::index-subscriptions');
             });
         });
