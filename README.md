@@ -39,7 +39,7 @@ TypiCMS\Modules\Subscriptions\Providers\ModuleServiceProvider::class,
 Add the cashier model and the mollie key in your `.env` environment file:
 
 ```php
-CASHIER_MODEL=TypiCMS\Modules\Users\Models\User
+CASHIER_MODEL=TypiCMS\Modules\Core\Models\User
 MOLLIE_KEY="test_12345678912345678912345678912345"
 ```
 

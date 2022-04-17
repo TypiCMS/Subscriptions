@@ -3,6 +3,7 @@
 namespace TypiCMS\Modules\Subscriptions\Listeners;
 
 use Illuminate\Support\Facades\Notification;
+use TypiCMS\Modules\Core\Models\User;
 use TypiCMS\Modules\Subscriptions\Notifications\NewFailedOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\NewFirstPaidOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\NewPaidOrder;
@@ -10,7 +11,6 @@ use TypiCMS\Modules\Subscriptions\Notifications\YourCancelledSubscription;
 use TypiCMS\Modules\Subscriptions\Notifications\YourFailedOrder;
 use TypiCMS\Modules\Subscriptions\Notifications\YourNewSubscription;
 use TypiCMS\Modules\Subscriptions\Notifications\YourRenewedSubscription;
-use TypiCMS\Modules\Users\Models\User;
 
 class NotificationSubscriber
 {
