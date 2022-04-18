@@ -22,7 +22,7 @@ class Install extends Command
     public function handle()
     {
         $this->call('cashier:install', ['--template' => true]);
-        $this->call('translations:add', ['path' => 'vendor/typicms/subscriptions/resources/lang']);
+        $this->call('translations:add', ['path' => 'vendor/typicms/subscriptions/lang']);
         $this->call('notifications:table');
         $this->call('vendor:publish', [
             '--provider' => 'TypiCMS\Modules\Subscriptions\Providers\ModuleServiceProvider',
