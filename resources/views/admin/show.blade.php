@@ -4,13 +4,6 @@
 
 @section('content')
 
-    <div class="header">
-        @include('core::admin._button-back', ['module' => 'subscriptions'])
-        <h1 class="header-title @if (!$model->present()->title)text-muted @endif">
-            {{ $model->present()->title ?: __('Untitled') }}
-        </h1>
-    </div>
-
     <div class="btn-toolbar mb-4">
         @if($model->status === 'active')
             {!! BootForm::open()->action(route('admin::cancel-subscription', $model)) !!}
