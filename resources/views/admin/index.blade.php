@@ -13,7 +13,7 @@
     include="owner"
     :selector="false"
     :actions="false"
-    :multilingual="false"
+    :translatable="false"
     :searchable="['plan']"
     :sorting="['plan']">
 
