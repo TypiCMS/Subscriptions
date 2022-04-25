@@ -26,7 +26,7 @@
     </template>
 
     <template slot="table-row" slot-scope="{ model, checkedModels, loading }">
-        <td v-if="$can('read subscriptions')">@include('core::admin._button-show', ['module' => 'subscriptions'])</td>
+        <td v-if="$can('read subscriptions')"><item-list-show-button :url="'/admin/subscriptions/'+model.id"></item-list-show-button></td>
         <td>@{{ model.created_at | date }}</td>
         <td>@{{ model.owner.first_name}}</td>
         <td>@{{ model.owner.last_name}}</td>
