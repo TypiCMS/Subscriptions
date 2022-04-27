@@ -24,7 +24,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views/', 'subscriptions');
 
         $this->publishes([__DIR__.'/../../database/migrations/add_columns_to_users_table.php.stub' => getMigrationFileName('add_columns_to_users_table')], 'typicms-migrations');
-        $this->publishes([__DIR__.'/../../resources/views' => resource_path('views/subscriptions')], 'typicms-views');
+        $this->publishes([__DIR__.'/../../resources/views' => resource_path('views/vendor/subscriptions')], 'typicms-views');
         $this->publishes([__DIR__.'/../../resources/scss' => resource_path('scss')], 'typicms-resources');
 
         View::composer('core::admin._sidebar', SidebarViewComposer::class);
