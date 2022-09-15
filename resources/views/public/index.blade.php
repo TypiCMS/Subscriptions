@@ -17,8 +17,8 @@
     <div class="account">
 
         <div class="rich-content">{!! $page->present()->body !!}</div>
-        @include('files::public._documents', ['model' => $page])
-        @include('files::public._images', ['model' => $page])
+        @include('files::public._document-list', ['model' => $page])
+        @include('files::public._image-list', ['model' => $page])
 
         @include('subscriptions::public._alerts')
 
