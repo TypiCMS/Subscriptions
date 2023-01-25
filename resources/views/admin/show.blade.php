@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="btn-toolbar mb-4">
-        @if($model->status === 'active')
+        @if ($model->status === 'active')
             {!! BootForm::open()->action(route('admin::cancel-subscription', $model)) !!}
                 <button class="btn btn-sm btn-danger me-2" type="submit">@lang('Cancel the subscription')</button>
             {!! BootForm::close() !!}

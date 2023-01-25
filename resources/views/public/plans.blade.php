@@ -29,10 +29,10 @@
                     <div class="plan-list-item-body">
                         <p class="plan-list-item-price">{{ Subscriber::planPriceFormat($plan['amount']['value'], auth()->user()->taxPercentage(), $plan['amount']['currency'], auth()->user()->getLocale()) }} <small class="plan-list-item-duration">@lang('/ '.$plan['interval'])</small></p>
                         <p class="plan-list-item-description">@lang($plan['description'])</p>
-                        @if($user->subscribed('main', $name))
+                        @if ($user->subscribed('main', $name))
                             <button class="plan-list-item-button" type="button" disabled>@lang('Current subscription')</button>
                         @else
-                            @if($user->subscribed('main'))
+                            @if ($user->subscribed('main'))
                                 {!! BootForm::open()->action(route($lang.'::subscriptions-upgrade')) !!}
                                 {!! BootForm::hidden('plan')->value($name) !!}
                                 <button class="plan-list-item-button" type="submit">@lang('Switch to this plan')</button>
@@ -52,7 +52,7 @@
 
         <p class="text-center mb-5">
             <a class="btn btn-light" href="{{ route($lang.'::subscriptions-profile') }}">
-                @if($user->subscribed('main'))
+                @if ($user->subscribed('main'))
                     @lang('Cancel')
                 @else
                     @lang('I will subscribe later')
