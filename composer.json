@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "~9.0",
+        "laravel/framework": "~10.0",
         "mollie/laravel-cashier-mollie": "^2.0",
         "moneyphp/money": "^3.3"
     },
