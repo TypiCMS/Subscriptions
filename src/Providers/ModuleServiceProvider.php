@@ -19,13 +19,13 @@ class ModuleServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/subscriptions.php', 'typicms.modules.subscriptions');
+        $this->mergeConfigFrom(__DIR__ . '/../config/subscriptions.php', 'typicms.modules.subscriptions');
 
-        $this->loadViewsFrom(__DIR__.'/../../resources/views/', 'subscriptions');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views/', 'subscriptions');
 
-        $this->publishes([__DIR__.'/../../database/migrations/add_columns_to_users_table.php.stub' => getMigrationFileName('add_columns_to_users_table')], 'typicms-migrations');
-        $this->publishes([__DIR__.'/../../resources/views' => resource_path('views/vendor/subscriptions')], 'typicms-views');
-        $this->publishes([__DIR__.'/../../resources/scss' => resource_path('scss')], 'typicms-resources');
+        $this->publishes([__DIR__ . '/../../database/migrations/add_columns_to_users_table.php.stub' => getMigrationFileName('add_columns_to_users_table')], 'typicms-migrations');
+        $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/subscriptions')], 'typicms-views');
+        $this->publishes([__DIR__ . '/../../resources/scss' => resource_path('scss')], 'typicms-resources');
 
         View::composer('core::admin._sidebar', SidebarViewComposer::class);
 

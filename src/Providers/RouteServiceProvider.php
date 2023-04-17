@@ -15,7 +15,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map(): void
     {
         foreach (locales() as $lang) {
-            Route::middleware('web')->get($lang.'/webhooks/cashier/check-payment/{payment_id}', [PublicController::class, 'checkPayment']);
+            Route::middleware('web')->get($lang . '/webhooks/cashier/check-payment/{payment_id}', [PublicController::class, 'checkPayment']);
         }
 
         /*
@@ -25,7 +25,7 @@ class RouteServiceProvider extends ServiceProvider
             $middleware = ['public', 'auth'];
             foreach (locales() as $lang) {
                 if ($page->isPublished($lang) && $uri = $page->uri($lang)) {
-                    Route::middleware($middleware)->prefix($uri)->name($lang.'::')->group(function (Router $router) {
+                    Route::middleware($middleware)->prefix($uri)->name($lang . '::')->group(function (Router $router) {
                         $router->get('/', [PublicController::class, 'profileIndex'])->name('subscriptions-profile');
                         $router->get('edit', [PublicController::class, 'profileEdit'])->name('subscriptions-profile-edit');
                         $router->post('edit', [PublicController::class, 'profileUpdate'])->name('subscriptions-profile-update');

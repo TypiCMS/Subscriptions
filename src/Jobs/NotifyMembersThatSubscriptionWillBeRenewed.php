@@ -36,7 +36,7 @@ class NotifyMembersThatSubscriptionWillBeRenewed implements ShouldQueue
                 Carbon::now()->addDays(7)->toDateTimeString(),
             ])
             ->get();
-        info($subscriptions->count().' notification will be renewed in 7 days.');
+        info($subscriptions->count() . ' notification will be renewed in 7 days.');
         foreach ($subscriptions as $subscription) {
             $user = $subscription->owner;
             $subscription->owner->notify(new YourSubscriptionWillBeRenewed($subscription));

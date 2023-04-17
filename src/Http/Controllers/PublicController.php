@@ -60,7 +60,7 @@ class PublicController extends BasePublicController
         $request->user()->update($request->validated());
 
         return redirect()
-            ->route(app()->getLocale().'::subscriptions-profile')
+            ->route(app()->getLocale() . '::subscriptions-profile')
             ->with('success', __('Your profile has been successfully updated.'));
     }
 
@@ -68,7 +68,7 @@ class PublicController extends BasePublicController
     {
         if ($request->user()->hasRunningSubscription()) {
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your payment method could not be revoked as you have a running subscription.'));
         }
 
@@ -76,13 +76,13 @@ class PublicController extends BasePublicController
             $request->user()->mollieMandate()->revoke();
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('success', __('Your payment method was sucesfully revoked.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your payment method could not be revoked.'));
         }
     }
@@ -90,7 +90,7 @@ class PublicController extends BasePublicController
     public function paymentMethodUpdate()
     {
         // Not now.
-        return redirect()->route(app()->getLocale().'::subscriptions-profile');
+        return redirect()->route(app()->getLocale() . '::subscriptions-profile');
     }
 
     public function subscribe(SubscriptionsPlan $request)
@@ -108,7 +108,7 @@ class PublicController extends BasePublicController
             $result = $user->newSubscription(
                 $name,
                 $plan,
-                ['redirectUrl' => config('app.url').'/'.app()->getLocale().'/webhooks/cashier/check-payment/{payment_id}']
+                ['redirectUrl' => config('app.url') . '/' . app()->getLocale() . '/webhooks/cashier/check-payment/{payment_id}']
             )->create();
 
             if (is_a($result, RedirectToCheckoutResponse::class)) {
@@ -120,7 +120,7 @@ class PublicController extends BasePublicController
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be performed.'));
         }
     }
@@ -134,18 +134,18 @@ class PublicController extends BasePublicController
                 $user->subscription('main')->cancel();
 
                 return redirect()
-                    ->route(app()->getLocale().'::subscriptions-profile')
+                    ->route(app()->getLocale() . '::subscriptions-profile')
                     ->with('success', __('Your subscription was sucessfully cancelled.'));
             }
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be cancelled.'));
         }
     }
@@ -158,13 +158,13 @@ class PublicController extends BasePublicController
                 ->resume();
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('success', __('Your subscription was sucessfully resumed.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be resumed.'));
         }
     }
@@ -179,12 +179,12 @@ class PublicController extends BasePublicController
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be upgraded.'));
         }
 
         return redirect()
-            ->route(app()->getLocale().'::subscriptions-profile')
+            ->route(app()->getLocale() . '::subscriptions-profile')
             ->with('success', __('Your subscription was sucessfully upgraded.'));
     }
 
@@ -218,18 +218,18 @@ class PublicController extends BasePublicController
 
             if ($payment->status == PaymentStatus::STATUS_PAID) {
                 return redirect()
-                    ->route(app()->getLocale().'::subscriptions-profile')
+                    ->route(app()->getLocale() . '::subscriptions-profile')
                     ->with('success', __('You are now successfully subscribed.'));
             }
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         } catch (Exception $e) {
             report($e);
 
             return redirect()
-                ->route(app()->getLocale().'::subscriptions-profile')
+                ->route(app()->getLocale() . '::subscriptions-profile')
                 ->with('error', __('Your subscription could not be perfomed. Please retry.'));
         }
     }

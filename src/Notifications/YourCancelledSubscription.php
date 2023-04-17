@@ -48,7 +48,7 @@ class YourCancelledSubscription extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('Goodbye'))
+            ->subject('[' . TypiCMS::title() . '] ' . __('Goodbye'))
             ->markdown('subscriptions::mail.your-cancelled-subscription', ['user' => $this->user, 'subscription' => $this->subscription]);
     }
 

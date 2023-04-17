@@ -48,7 +48,7 @@ class NewFailedOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('A subscription renewal has failed.'))
+            ->subject('[' . TypiCMS::title() . '] ' . __('A subscription renewal has failed.'))
             ->markdown('subscriptions::mail.new-failed-order', ['user' => $this->user, 'order' => $this->order]);
     }
 

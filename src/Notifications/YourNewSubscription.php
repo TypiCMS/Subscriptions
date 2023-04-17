@@ -48,7 +48,7 @@ class YourNewSubscription extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('Welcome'))
+            ->subject('[' . TypiCMS::title() . '] ' . __('Welcome'))
             ->markdown('subscriptions::mail.your-new-subscription', ['user' => $this->user, 'order' => $this->order]);
     }
 

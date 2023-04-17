@@ -45,7 +45,7 @@ class YourSubscriptionWillBeRenewed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('['.TypiCMS::title().'] '.__('Your subscription'))
+            ->subject('[' . TypiCMS::title() . '] ' . __('Your subscription'))
             ->markdown('subscriptions::mail.your-subscription-will-be-renewed', ['subscription' => $this->subscription]);
     }
 

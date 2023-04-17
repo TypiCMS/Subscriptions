@@ -14,7 +14,7 @@ trait BillableUser
      */
     public function getInvoiceInformation(): array
     {
-        return [$this->first_name.' '.$this->last_name, $this->email, $this->street.' '.$this->number, $this->postal_code.' '.$this->city, $this->country];
+        return [$this->first_name . ' ' . $this->last_name, $this->email, $this->street . ' ' . $this->number, $this->postal_code . ' ' . $this->city, $this->country];
     }
 
     /**
